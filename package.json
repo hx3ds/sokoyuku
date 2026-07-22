@@ -1,0 +1,17 @@
+{
+  "name": "sokoyuku",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host localhost --port 9990",
+    "build": "astro build",
+    "preview": "astro preview --host localhost --port 9990",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.4.6"
+  }
+}

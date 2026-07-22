@@ -1,0 +1,973 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const site = {
+	name: "Sokoyuku",
+	description:
+		"",
+};
+const heroTitle = "Build or Chat with AI models just like your contacts";
+const heroSubtitle = site.description;
+const faqItems = [
+	{
+		question: "What is model and prototype?",
+		answer:
+			"Models are instances of prototypes, different models of the same prototype is treated differently. You may think of models as copies of prototypes",
+	},
+	{
+		question: "What is cloud account and local account?",
+		answer:
+			"Cloud accounts are managed by sokoyuku, you can run your own local conductors to manage local accounts.",
+	},
+	{
+		question: "Is it free to use?",
+		answer:
+			"You can access to all features of sokoyuku with either free plan or pro plan, subscription to pro plan gives you more allocated resources. For normal usage, free plan is enough for most cases.",
+	},
+];
+const appSite = "https://app.sokoyuku.com";
+const pricingPlans = [
+	{
+		name: "Free",
+		price: "$0",
+		period: "/month",
+		description: "All features included with free plan, limits applied",
+		ctaLabel: "Start Free",
+		ctaHref: "#cta",
+		featured: false,
+		features: [
+			"Up to 10 cloud accounts",
+			"Up to 40 local accounts",
+			"Up to 40 models",
+			"Up to 20 prototypes",
+
+		],
+	},
+	{
+		name: "Pro",
+		price: "$9.99",
+		period: "/month",
+		description: "Subscribe for more resources allocated",
+		ctaLabel: "Get Pro",
+		ctaHref: "#cta",
+		featured: true,
+		features: [
+			"Up to 60 cloud accounts (valid until subscription end)",
+			"Up to 240 local accounts (Permanent upgrade)",
+			"Up to 240 models (Permanent upgrade)",
+			"Up to 120 prototypes (Permanent upgrade)",
+		],
+	},
+];
+const year = new Date().getFullYear();
+
+---
+
+<BaseLayout title={site.name} description={site.description} appSite={appSite}>
+	<section class="hero">
+		<div class="container hero-inner">
+			<h1 class="hero-title">{heroTitle}</h1>
+			<p class="hero-subtitle">{heroSubtitle}</p>
+
+			<div class="hero-actions" id="cta">
+				<a class="button button-lg" href={appSite}>Start now</a>
+				<a class="button button-lg button-ghost button-ghost-learn" href="#how">Learn more</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt" id="how">
+		<div class="container">
+			<div class="section-head">
+				<h2>How it works</h2>
+				<p>Simple flow from sign-in to your first chat.</p>
+			</div>
+
+			<div class="how-panel" aria-label="Workflow">
+				<div class="how-panel-top">
+					<div class="how-panel-title">Workflow</div>
+				</div>
+				<ol class="how-steps">
+					<li class="how-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+								/>
+							</svg>
+						</div>
+						<div class="how-step-body">
+							<div class="how-step-title">Sign in</div>
+							<div class="how-step-desc">Create a new account or sign in with existing one</div>
+						</div>
+					</li>
+
+					<li class="how-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+						<div class="how-step-body">
+							<div class="how-step-title">Connect account</div>
+							<div class="how-step-desc">
+								Connect a Telegram/Matrix/Discord account or any local account
+							</div>
+						</div>
+					</li>
+
+					<li class="how-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+								/>
+							</svg>
+						</div>
+						<div class="how-step-body">
+							<div class="how-step-title">Search prototype</div>
+							<div class="how-step-desc">
+								Find a prototype you like
+							</div>
+						</div>
+					</li>
+
+					<li class="how-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
+								/>
+							</svg>
+						</div>
+						<div class="how-step-body">
+							<div class="how-step-title">Create model</div>
+							<div class="how-step-desc">
+								Create a model from the choosen prototype
+							</div>
+						</div>
+					</li>
+
+					<li class="how-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
+								/>
+							</svg>
+						</div>
+						<div class="how-step-body">
+							<div class="how-step-title">Open chat</div>
+							<div class="how-step-desc">
+								Select an account for the model and chat immediately
+							</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="developers">
+		<div class="container">
+			<div class="section-head">
+				<h2>Developer workflow</h2>
+				<p>Find a template, create your own prototype, then upload your prototype.</p>
+			</div>
+
+			<div class="how-panel" aria-label="Developer workflow">
+				<div class="flow-steps" aria-label="Developer workflow steps">
+					<div class="flow-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+								/>
+							</svg>
+						</div>
+						<div class="flow-step-body">
+							<div class="how-step-title">Find templates</div>
+							<div class="how-step-desc">
+								Start from official templates on GitHub:
+								<a
+									href="https://github.com/sokoyuku"
+									target="_blank"
+									rel="noopener noreferrer"
+									>github.com/sokoyuku</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="flow-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M12 6v12m6-6H6"
+								/>
+							</svg>
+						</div>
+						<div class="flow-step-body">
+							<div class="how-step-title">Create your own prototype</div>
+							<div class="how-step-desc">
+								Clone a template and tailor it to your needs.
+							</div>
+						</div>
+					</div>
+
+					<div class="flow-step">
+						<div class="how-step-icon" aria-hidden="true">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+								/>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M10 8.25v7.5L16 12l-6-3.75Z"
+								/>
+							</svg>
+						</div>
+						<div class="flow-step-body">
+							<div class="how-step-title">Run station</div>
+							<div class="how-step-desc">
+								Run station and upload the prototype automatically.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="security">
+		<div class="container">
+			<div class="section-head">
+				<h2>Security-minded</h2>
+				<p>
+					Security built into authentication, data handling, and platform
+					operations.
+				</p>
+			</div>
+
+			<div class="security-row" aria-label="Security highlights">
+				<div class="security-item">
+					<div class="security-title">Secrets guarded</div>
+					<div class="security-desc">
+						Tokens and credentials protected and scoped to the right
+						accounts.
+					</div>
+				</div>
+
+				<div class="security-item">
+					<div class="security-title">No message stored</div>
+					<div class="security-desc">
+						Focus on safe operation without persisting message bodies.
+					</div>
+				</div>
+
+				<div class="security-item">
+					<div class="security-title">Local conductor</div>
+					<div class="security-desc">
+						Run a local conductor for maximum control over routing.
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt" id="pricing">
+		<div class="container">
+			<div class="section-head">
+				<h2>Pricing</h2>
+				<p>Choose the platform tier that suits your needs.</p>
+			</div>
+
+			<div class="pricing-grid" aria-label="Pricing plans">
+				{pricingPlans.map((plan) => (
+					<article class:list={["pricing-card", plan.featured && "pricing-card-featured"]}>
+						<div class="pricing-top">
+							<div>
+								<div class="pricing-name">{plan.name}</div>
+								<p class="pricing-desc">{plan.description}</p>
+							</div>
+						</div>
+
+						<div class="pricing-price-row">
+							<span class="pricing-price">{plan.price}</span>
+							<span class="pricing-period">{plan.period}</span>
+						</div>
+
+						<ul class="pricing-features">
+							{plan.features.map((feature) => (
+								<li>{feature}</li>
+							))}
+						</ul>
+
+						<a
+							class:list={["button", "button-lg", !plan.featured && "button-ghost", !plan.featured && "button-ghost-learn"]}
+							href={plan.featured ? `${appSite}?plan=pro` : appSite}
+						>
+							{plan.ctaLabel}
+						</a>
+					</article>
+				))}
+			</div>
+
+			<p class="pricing-footnote">
+				*Platform subscriptions are separate from any subscription-based prototype pricing.
+			</p>
+		</div>
+	</section>
+
+	<section class="section section-alt" id="faq">
+		<div class="container">
+			<div class="section-head">
+				<h2>FAQ</h2>
+			</div>
+
+			<div class="faq">
+				{faqItems.map((item) => (
+					<details class="qa">
+						<summary>
+							<span>{item.question}</span>
+							<span class="qa-toggle" aria-hidden="true"></span>
+						</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		font-weight: 500;
+		font-family: inherit;
+		font-size: 0.875rem;
+		border: 1px solid transparent;
+		white-space: nowrap;
+		user-select: none;
+		background-color: var(--color-primary);
+		color: var(--color-text-inverse);
+		box-shadow: 0 10px 24px rgba(0, 136, 204, 0.22);
+		transition: transform 0.2s ease, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+			background-color 0.2s ease-in-out;
+	}
+
+	.button:hover {
+		text-decoration: none;
+		background-color: var(--color-primary-hover);
+		color: var(--color-text-inverse);
+		box-shadow: var(--shadow-sm);
+		transform: translateY(-1px);
+	}
+
+	.button:active {
+		filter: brightness(95%);
+		box-shadow: none;
+		transform: translateY(0);
+	}
+
+	.button:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 136, 204, 0.22);
+	}
+
+	.button-ghost {
+		background-color: white;
+		border-color: var(--color-border);
+		color: var(--color-text-main);
+		box-shadow: none;
+	}
+
+	.button-ghost:hover {
+		filter: none;
+		background: var(--color-bg-hover);
+		color: var(--color-text-main);
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.button-ghost-learn:hover {
+		background: white;
+		color: var(--color-success);
+	}
+
+	.button-lg {
+		padding: 0.75rem 1.25rem;
+		font-size: 1rem;
+	}
+
+    /* Component specific styles */
+	.section {
+		padding: 3rem 0;
+	}
+
+	.section-alt {
+		background: transparent;
+		border-top: none;
+		border-bottom: none;
+	}
+
+	.section-head h2 {
+		margin: 0 0 8px;
+		font-size: clamp(1.55rem, 2.1vw, 1.9rem);
+		letter-spacing: -0.5px;
+		font-weight: 800;
+		color: #4A90D9;
+	}
+
+	.section-head p {
+		margin: 0 0 18px;
+		color: var(--color-text-secondary);
+		max-width: 70ch;
+	}
+
+	.section-head {
+		text-align: center;
+	}
+
+	.section-head p {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+	}
+
+	.card {
+		border-radius: 12px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		padding: 16px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+		border-color: color-mix(in srgb, var(--color-border), var(--color-primary) 16%);
+	}
+
+	.card h3 {
+		margin: 0 0 8px;
+		font-size: 1rem;
+		color: var(--color-text-main);
+	}
+
+	.card p {
+		margin: 0;
+		color: var(--color-text-secondary);
+		font-size: 14px;
+	}
+
+	.how-panel {
+		border-radius: 12px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-md);
+		overflow: hidden;
+		max-width: 52rem;
+		margin: 0 auto;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	}
+
+	.how-panel:hover {
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-lg);
+		border-color: color-mix(in srgb, var(--color-border), var(--color-primary) 14%);
+	}
+
+	.how-panel + .how-panel {
+		margin-top: 14px;
+	}
+
+	.how-panel-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 12px 14px;
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-bg-surface);
+	}
+
+	.how-panel-title {
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-text-secondary);
+	}
+
+	.how-steps {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+	}
+
+	.how-step {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px;
+		border-top: 1px solid var(--color-border-light);
+	}
+
+	.how-step:first-child {
+		border-top: none;
+	}
+
+	.how-step-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-primary-soft);
+		color: var(--color-primary);
+		border: 1px solid color-mix(in srgb, var(--color-primary), transparent 70%);
+		flex: 0 0 auto;
+	}
+
+	.how-step-icon svg {
+		width: 18px;
+		height: 18px;
+		display: block;
+	}
+
+	.how-step-body {
+		min-width: 0;
+		flex: 1;
+	}
+
+	.flow-steps {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+		gap: 0;
+		background: linear-gradient(
+			90deg,
+			rgba(7, 59, 116, 0.022) 0%,
+			rgba(0, 136, 204, 0.014) 55%,
+			rgba(105, 199, 255, 0.024) 100%
+		);
+	}
+
+	.flow-step {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px;
+		min-width: 0;
+	}
+
+	.flow-step + .flow-step {
+		border-left: none;
+	}
+
+	.flow-step-body {
+		min-width: 0;
+	}
+
+	@media (max-width: 720px) {
+		.flow-steps {
+			flex-direction: column;
+			align-items: stretch;
+			background: linear-gradient(
+				180deg,
+				rgba(7, 59, 116, 0.022) 0%,
+				rgba(0, 136, 204, 0.014) 55%,
+				rgba(105, 199, 255, 0.024) 100%
+			);
+		}
+
+		.flow-step + .flow-step {
+			border-left: none;
+			border-top: none;
+		}
+	}
+
+	.how-step-title {
+		font-weight: 600;
+		color: var(--color-text-main);
+	}
+
+	.how-step-desc {
+		margin-top: 2px;
+		color: var(--color-text-secondary);
+		font-size: 14px;
+	}
+
+	.security-row {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		max-width: 52rem;
+		margin: 0 auto;
+	}
+
+	.security-item {
+		border-radius: 12px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		padding: 16px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+		min-height: 96px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 6px;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	}
+
+	.security-item:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+		border-color: color-mix(in srgb, var(--color-border), var(--color-primary) 16%);
+	}
+
+	.security-title {
+		font-weight: 600;
+		color: var(--color-text-main);
+	}
+
+	.security-desc {
+		color: var(--color-text-secondary);
+		font-size: 14px;
+	}
+
+	.pricing-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+		max-width: 52rem;
+		margin: 0 auto;
+	}
+
+	.pricing-card {
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		border-radius: 16px;
+		padding: 22px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-md);
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	}
+
+	.pricing-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+		border-color: color-mix(in srgb, var(--color-border), var(--color-primary) 16%);
+	}
+
+	.pricing-card-featured {
+		background: linear-gradient(
+			180deg,
+			color-mix(in srgb, var(--color-bg-surface), var(--color-primary-soft) 42%),
+			var(--color-bg-surface)
+		);
+		border-color: color-mix(in srgb, var(--color-primary), white 60%);
+	}
+
+	.pricing-top {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.pricing-name {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--color-text-main);
+	}
+
+	.pricing-desc {
+		margin-top: 8px;
+		color: var(--color-text-secondary);
+		font-size: 14px;
+	}
+
+	.pricing-price-row {
+		display: flex;
+		align-items: baseline;
+		gap: 6px;
+	}
+
+	.pricing-price {
+		font-size: clamp(2rem, 4vw, 2.5rem);
+		line-height: 1;
+		font-weight: 800;
+		color: var(--color-text-main);
+	}
+
+	.pricing-period {
+		color: var(--color-text-secondary);
+		font-size: 0.95rem;
+	}
+
+	.pricing-features {
+		list-style: none;
+		display: grid;
+		gap: 10px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.pricing-features li {
+		position: relative;
+		padding-left: 1.4rem;
+		color: var(--color-text-main);
+		font-size: 14px;
+	}
+
+	.pricing-features li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.42rem;
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: var(--color-primary);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary), transparent 86%);
+	}
+
+	.pricing-footnote {
+		margin: 14px auto 0;
+		max-width: 52rem;
+		text-align: center;
+		color: var(--color-text-secondary);
+		font-size: 14px;
+	}
+
+	.faq {
+		display: grid;
+		gap: 12px;
+		margin-bottom: 22px;
+		max-width: 52rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.qa {
+		border-radius: 12px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		padding: 14px 16px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+		transition: box-shadow 0.2s ease, border-color 0.2s ease;
+	}
+
+	.qa:hover {
+		box-shadow: var(--shadow-sm);
+		border-color: color-mix(in srgb, var(--color-border), var(--color-primary) 12%);
+	}
+
+	.qa summary {
+		cursor: pointer;
+		font-weight: 600;
+		color: var(--color-text-main);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		list-style: none;
+	}
+
+	.qa summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.qa summary::marker {
+		content: "";
+	}
+
+	.qa-toggle {
+		width: 18px;
+		height: 18px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
+		color: var(--color-text-secondary);
+	}
+
+	.qa-toggle::before {
+		content: "";
+		width: 8px;
+		height: 8px;
+		border-right: 2px solid currentColor;
+		border-bottom: 2px solid currentColor;
+		transform: rotate(45deg);
+		transition: transform 0.18s ease;
+	}
+
+	.qa[open] .qa-toggle::before {
+		transform: rotate(-135deg);
+	}
+
+	.qa p {
+		margin: 10px 0 0;
+		color: var(--color-text-main);
+		font-size: 14px;
+	}
+
+	@media (max-width: 920px) {
+		.grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 720px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+
+		.security-row {
+			grid-template-columns: 1fr;
+		}
+
+		.pricing-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+    /* Hero section styles moved from BaseLayout area or were specific */
+    .hero {
+        position: relative;
+        padding: 3.25rem 0 2rem;
+    }
+
+    .hero-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+        max-width: 52rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .hero-title {
+        font-size: clamp(32px, 4.2vw, 48px);
+        line-height: 1.35;
+        margin: 0 0 10px;
+        letter-spacing: -0.5px;
+        color: var(--color-text-main);
+        font-weight: 800;
+        max-width: 26ch;
+        text-wrap: balance;
+    }
+
+    @supports (-webkit-background-clip: text) {
+        .hero-title {
+            background: linear-gradient(90deg, #073b74 0%, #0088cc 48%, #69c7ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-title::selection {
+            -webkit-text-fill-color: var(--color-text-main);
+            background: rgba(0, 136, 204, 0.14);
+        }
+    }
+
+    .hero-subtitle {
+        margin: 0 0 10px;
+        color: var(--color-text-secondary);
+        font-size: 1rem;
+        max-width: 60ch;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+    }
+
+	@media (max-width: 480px) {
+        .hero {
+            padding: 2rem 0 1.25rem;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .hero-actions .button {
+            width: 100%;
+        }
+
+        .how-step {
+            padding: 12px;
+        }
+    }
+</style>
+	</body>
+</html>

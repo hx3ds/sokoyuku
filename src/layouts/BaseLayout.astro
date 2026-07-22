@@ -1,0 +1,441 @@
+---
+export interface Props {
+	title?: string;
+	description?: string;
+	appSite?: string;
+}
+
+const frontmatter = Astro.props.frontmatter ?? {};
+const pageTitle = frontmatter.title ?? Astro.props.title ?? "Sokoyuku";
+const pageDescription = frontmatter.description ?? Astro.props.description ?? "";
+const appSite = Astro.props.appSite ?? "/#cta";
+const year = new Date().getFullYear();
+const isLegal = Astro.url.pathname.startsWith("/legal/");
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
+	</head>
+	<body>
+		<a class="skip" href="#main">Skip to content</a>
+
+		<header class="header">
+			<div class="container header-inner">
+				<a class="brand" href="/" aria-label="Sokoyuku home">
+					<span class="brand-text">Sokoyuku</span>
+				</a>
+				<div class="header-cta">
+					<a class="button" href={appSite}>Launch</a>
+				</div>
+			</div>
+		</header>
+
+		<main id="main">
+			{isLegal ? <div class="legal-document"><slot /></div> : <slot />}
+		</main>
+
+		<footer class="footer">
+			<div class="container footer-inner">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<div class="brand">
+							<span class="mark" aria-hidden="true"></span>
+							<span class="brand-text">Sokoyuku</span>
+						</div>
+						<div class="footer-meta">
+							&copy; {year} Sokoyuku. All rights reserved.
+						</div>
+					</div>
+					<div class="footer-groups" aria-label="Footer links">
+						<div class="footer-group">
+							<div class="footer-group-title">Legal</div>
+							<div class="footer-group-links">
+								<a href="/legal/privacy">Privacy Policy</a>
+								<a href="/legal/terms">Terms of Service</a>
+								<a href="/legal/cookies">Cookie Policy</a>
+								<a href="/legal/creator-contract">Standard Contract</a>
+								<a href="/legal/model-privacy">Model Privacy Policy</a>
+							</div>
+						</div>
+						<div class="footer-group">
+							<div class="footer-group-title">Support</div>
+							<div class="footer-group-links">
+								<a href="mailto:support@sokoyuku.com">support@sokoyuku.com</a>
+							</div>
+						</div>
+						<div class="footer-group">
+							<div class="footer-group-title">Community</div>
+							<div class="footer-group-links">
+								<a href="https://github.com/sokoyuku" target="_blank" rel="noopener noreferrer">GitHub</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	html,
+	body {
+		min-height: 100%;
+	}
+
+	html {
+		scroll-padding-top: calc(var(--header-height) + 12px);
+	}
+
+	body {
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	a {
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: color 0.2s;
+		text-underline-offset: 3px;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: var(--color-primary-hover);
+	}
+
+	::selection {
+		background: color-mix(in srgb, var(--color-primary), white 70%);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			transition: none !important;
+		}
+	}
+
+	:root {
+		color-scheme: light;
+		--color-primary: #0088cc;
+		--color-primary-hover: #007ab8;
+		--color-primary-soft: #e5f3fa;
+		--color-primary-ring: rgba(0, 136, 204, 0.3);
+		--color-success: #69c7ff;
+		--color-success-hover: #4eb9fb;
+		--color-danger: #ff3b30;
+		--color-danger-hover: #d63128;
+		--color-warning: #ffcc00;
+		--color-bg-body: #f0f2f5;
+		--color-bg-surface: #ffffff;
+		--color-bg-secondary: #f5f6f7;
+		--color-bg-hover: #f0f2f5;
+		--color-text-main: #050505;
+		--color-text-secondary: #65676b;
+		--color-text-tertiary: #b0b3b8;
+		--color-text-inverse: #ffffff;
+		--color-border: #dfe3e8;
+		--color-border-light: #ebedf0;
+		--font-roboto: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+			Helvetica, Arial, sans-serif;
+		--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+		--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+		--shadow-lg: 0 18px 55px rgba(0, 0, 0, 0.14);
+		--radius: 8px;
+		--radius-sm: 6px;
+		--radius-lg: 14px;
+		--header-height: 64px;
+	}
+
+	html {
+		background: var(--color-bg-body);
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		color: var(--color-text-main);
+		font-family: var(--font-roboto);
+		line-height: 1.65;
+		padding-top: var(--header-height);
+		background:
+			radial-gradient(900px circle at 12% -10%, rgba(0, 136, 204, 0.16), transparent 55%),
+			var(--color-bg-body);
+	}
+
+	.skip {
+		position: absolute;
+		left: -999px;
+		top: 12px;
+		padding: 10px 12px;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		color: var(--color-text-main);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.skip:focus {
+		left: 12px;
+	}
+
+	.container {
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background: color-mix(in srgb, var(--color-bg-surface), transparent 25%);
+		border-bottom: 1px solid color-mix(in srgb, var(--color-border), transparent 40%);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		min-height: 64px;
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		font-weight: 600;
+		color: var(--color-text-main);
+		text-decoration: none;
+	}
+
+	.brand:hover {
+		text-decoration: none;
+	}
+
+	.brand-text {
+		font-size: 1rem;
+	}
+
+	.header-cta {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		font-weight: 500;
+		font-family: inherit;
+		font-size: 0.875rem;
+		border: 1px solid transparent;
+		white-space: nowrap;
+		user-select: none;
+		background-color: var(--color-primary);
+		color: var(--color-text-inverse);
+		box-shadow: 0 10px 24px rgba(0, 136, 204, 0.22);
+		transition: transform 0.2s ease, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+			background-color 0.2s ease-in-out;
+	}
+
+	.button:hover {
+		text-decoration: none;
+		background-color: var(--color-primary-hover);
+		color: var(--color-text-inverse);
+		box-shadow: var(--shadow-sm);
+		transform: translateY(-1px);
+	}
+
+	.button:active {
+		filter: brightness(95%);
+		box-shadow: none;
+		transform: translateY(0);
+	}
+
+	.button:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 136, 204, 0.22);
+	}
+
+	.footer {
+		padding: 22px 0 60px;
+		border-top: 1px solid var(--color-border);
+		background: transparent;
+	}
+
+	.footer-inner {
+		display: block;
+	}
+
+	.footer-top {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		gap: 18px;
+		align-items: start;
+	}
+
+	.footer-brand .brand {
+		display: inline-flex;
+	}
+
+	.footer-meta {
+		color: var(--color-text-secondary);
+		font-size: 13px;
+		margin-top: 8px;
+	}
+
+	.footer-groups {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+	}
+
+	.footer-group-title {
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-text-main);
+	}
+
+	.footer-group-links {
+		margin-top: 8px;
+		display: grid;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.footer-group-links a {
+		color: var(--color-text-main);
+	}
+
+	@media (max-width: 920px) {
+		.footer-top {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.footer-groups {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.legal-document {
+		max-width: 64rem;
+		margin: 2rem auto 4rem;
+		padding: 2rem;
+		border: 1px solid var(--color-border);
+		border-radius: 16px;
+		background: var(--color-bg-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.legal-document h1,
+	.legal-document h2,
+	.legal-document h3 {
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.legal-document h1 {
+		margin-top: 0;
+		font-size: clamp(2rem, 4vw, 2.8rem);
+	}
+
+	.legal-document h2 {
+		margin-top: 2rem;
+		font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+	}
+
+	.legal-document h3 {
+		margin-top: 1.5rem;
+		font-size: 1.05rem;
+	}
+
+	.legal-document p,
+	.legal-document li,
+	.legal-document td,
+	.legal-document th,
+	.legal-document blockquote {
+		color: var(--color-text-main);
+	}
+
+	.legal-document a {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
+	.legal-document hr {
+		border: 0;
+		border-top: 1px solid var(--color-border);
+		margin: 2rem 0;
+	}
+
+	.legal-document table {
+		width: 100%;
+		border-collapse: collapse;
+		display: block;
+		overflow-x: auto;
+	}
+
+	.legal-document th,
+	.legal-document td {
+		padding: 0.75rem;
+		border: 1px solid var(--color-border);
+		vertical-align: top;
+	}
+
+	.legal-document blockquote {
+		margin: 1.5rem 0;
+		padding-left: 1rem;
+		border-left: 4px solid rgba(0, 136, 204, 0.2);
+	}
+
+	.legal-document code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+			"Courier New", monospace;
+	}
+
+	@media (max-width: 720px) {
+		.legal-document {
+			padding: 1.25rem;
+			border-radius: 12px;
+			margin: 1rem auto 4rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.header-cta .button {
+			padding: 0.45rem 0.75rem;
+		}
+	}
+</style>
