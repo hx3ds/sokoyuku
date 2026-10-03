@@ -13,9 +13,41 @@ const year = new Date().getFullYear();
 const isLegal = Astro.url.pathname.startsWith("/legal/");
 ---
 
-<html lang="en">
+<html lang="en" data-i18n-title={pageTitle} data-i18n-description={pageDescription}>
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				var root = document.documentElement;
+
+				function matchLocale(tag) {
+					var raw = String(tag || "").trim();
+					if (raw === "en" || raw === "jp" || raw === "zh-Hans" || raw === "zh-Hant") return raw;
+					var n = raw.replace(/_/g, "-").toLowerCase();
+					if (!n) return null;
+					if (n === "jp" || n === "ja" || n.indexOf("ja-") === 0) return "jp";
+					if (n === "zh-hant" || n.indexOf("zh-hant") === 0 || n === "zh-tw" || n === "zh-hk" || n === "zh-mo" || n.indexOf("zh-tw") === 0 || n.indexOf("zh-hk") === 0 || n.indexOf("zh-mo") === 0) return "zh-Hant";
+					if (n === "zh-hans" || n.indexOf("zh-hans") === 0 || n === "zh-cn" || n === "zh-sg" || n === "zh-my" || n.indexOf("zh-cn") === 0 || n === "zh") return "zh-Hans";
+					if (n === "en" || n.indexOf("en-") === 0) return "en";
+					return null;
+				}
+
+				var locale = null;
+				try { locale = matchLocale(localStorage.getItem("sokoyuku-locale")); } catch (e) {}
+				if (!locale) {
+					var tags = [];
+					if (navigator.languages) tags.push.apply(tags, navigator.languages);
+					if (navigator.language) tags.push(navigator.language);
+					for (var i = 0; i < tags.length; i++) {
+						locale = matchLocale(tags[i]);
+						if (locale) break;
+					}
+				}
+				if (!locale) locale = "en";
+				var htmlLang = { en: "en", jp: "ja", "zh-Hans": "zh-Hans", "zh-Hant": "zh-Hant" };
+				root.lang = htmlLang[locale] || "en";
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
@@ -28,15 +60,57 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
-		<a class="skip" href="#main">Skip to content</a>
+		<a class="skip" href="#main" data-i18n="Skip to content">Skip to content</a>
 
 		<header class="header">
 			<div class="container header-inner">
-				<a class="brand" href="/" aria-label="Sokoyuku home">
+				<a class="brand header-logo" href="/" aria-label="Sokoyuku home" data-i18n-aria="Sokoyuku home">
 					<span class="brand-text">Sokoyuku</span>
 				</a>
 				<div class="header-cta">
-					<a class="button" href={appSite}>Launch</a>
+					<details class="pref-picker theme-picker">
+						<summary class="pref-trigger pref-trigger-icon" aria-label="Night Mode" data-i18n-aria="Night Mode">
+							<svg class="theme-icon theme-icon-day" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+							</svg>
+							<svg class="theme-icon theme-icon-night" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+							</svg>
+						</summary>
+						<div class="pref-menu" role="radiogroup" aria-label="Night Mode" data-i18n-aria="Night Mode">
+							<label class="pref-option">
+								<input type="radio" name="theme" id="theme-day" />
+								<span data-i18n="Day">Day</span>
+							</label>
+							<label class="pref-option">
+								<input type="radio" name="theme" id="theme-night" />
+								<span data-i18n="Night">Night</span>
+							</label>
+							<label class="pref-option">
+								<input type="radio" name="theme" id="theme-system" checked />
+								<span data-i18n="System">System</span>
+							</label>
+						</div>
+					</details>
+					<div class="pref-picker" data-pref="locale">
+						<button
+							type="button"
+							class="pref-trigger pref-trigger-icon"
+							aria-label="Language"
+							data-i18n-aria="Language"
+							aria-haspopup="listbox"
+							aria-expanded="false"
+						>
+							<span class="pref-code" data-locale-label>EN</span>
+						</button>
+						<ul class="pref-menu" role="listbox" aria-label="Language" data-i18n-aria="Language" hidden>
+							<li><button type="button" class="pref-option" role="option" data-value="en" aria-selected="false">English</button></li>
+							<li><button type="button" class="pref-option" role="option" data-value="jp" aria-selected="false">日本語</button></li>
+							<li><button type="button" class="pref-option" role="option" data-value="zh-Hans" aria-selected="false">简体中文</button></li>
+							<li><button type="button" class="pref-option" role="option" data-value="zh-Hant" aria-selected="false">繁體中文</button></li>
+						</ul>
+					</div>
+					<a class="button" href={appSite} data-i18n="Launch">Launch</a>
 				</div>
 			</div>
 		</header>
@@ -53,37 +127,40 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 							<span class="mark" aria-hidden="true"></span>
 							<span class="brand-text">Sokoyuku</span>
 						</div>
-						<div class="footer-meta">
+						<div class="footer-meta" data-i18n="© {year} Sokoyuku. All rights reserved." data-i18n-year={year}>
 							&copy; {year} Sokoyuku. All rights reserved.
 						</div>
 					</div>
-					<div class="footer-groups" aria-label="Footer links">
+					<div class="footer-groups" aria-label="Footer links" data-i18n-aria="Footer links">
 						<div class="footer-group">
-							<div class="footer-group-title">Legal</div>
+							<div class="footer-group-title" data-i18n="Legal">Legal</div>
 							<div class="footer-group-links">
-								<a href="/legal/privacy">Privacy Policy</a>
-								<a href="/legal/terms">Terms of Service</a>
-								<a href="/legal/cookies">Cookie Policy</a>
-								<a href="/legal/creator-contract">Standard Contract</a>
-								<a href="/legal/model-privacy">Model Privacy Policy</a>
+								<a href="/legal/privacy" data-i18n="Privacy Policy">Privacy Policy</a>
+								<a href="/legal/terms" data-i18n="Terms of Service">Terms of Service</a>
+								<a href="/legal/cookies" data-i18n="Cookie Policy">Cookie Policy</a>
+								<a href="/legal/creator-contract" data-i18n="Standard Contract">Standard Contract</a>
+								<a href="/legal/model-privacy" data-i18n="Model Privacy Policy">Model Privacy Policy</a>
 							</div>
 						</div>
 						<div class="footer-group">
-							<div class="footer-group-title">Support</div>
+							<div class="footer-group-title" data-i18n="Support">Support</div>
 							<div class="footer-group-links">
 								<a href="mailto:support@sokoyuku.com">support@sokoyuku.com</a>
 							</div>
 						</div>
 						<div class="footer-group">
-							<div class="footer-group-title">Community</div>
+							<div class="footer-group-title" data-i18n="Community">Community</div>
 							<div class="footer-group-links">
-								<a href="https://github.com/sokoyuku" target="_blank" rel="noopener noreferrer">GitHub</a>
+								<a href="https://github.com/sokoyuku" target="_blank" rel="noopener noreferrer" data-i18n="GitHub">GitHub</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</footer>
+		<script>
+			import "../scripts/preferences.js";
+		</script>
 	</body>
 </html>
 
@@ -155,7 +232,8 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 		--color-border: #dfe3e8;
 		--color-border-light: #ebedf0;
 		--font-roboto: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-			Helvetica, Arial, sans-serif;
+			Helvetica, Arial, "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK TC",
+			"Hiragino Sans", "Yu Gothic", "Malgun Gothic", "Microsoft YaHei", sans-serif;
 		--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
 		--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
 		--shadow-lg: 0 18px 55px rgba(0, 0, 0, 0.14);
@@ -163,6 +241,123 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 		--radius-sm: 6px;
 		--radius-lg: 14px;
 		--header-height: 64px;
+		--color-heading: #4a90d9;
+		--hero-from: #073b74;
+		--hero-mid: #0088cc;
+		--hero-to: #69c7ff;
+		--button-shadow: 0 10px 24px rgba(0, 136, 204, 0.22);
+		--button-focus-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 136, 204, 0.22);
+		--flow-gradient: linear-gradient(
+			90deg,
+			rgba(7, 59, 116, 0.022) 0%,
+			rgba(0, 136, 204, 0.014) 55%,
+			rgba(105, 199, 255, 0.024) 100%
+		);
+		--pricing-featured-border: color-mix(in srgb, var(--color-primary), white 60%);
+		--hero-selection: rgba(0, 136, 204, 0.14);
+	}
+
+	html:has(#theme-night:checked) {
+		color-scheme: dark;
+		--color-primary: #6ab2f2;
+		--color-primary-hover: #7ec1f9;
+		--color-primary-soft: #1e2c3a;
+		--color-primary-ring: rgba(106, 178, 242, 0.35);
+		--color-bg-body: #0e1621;
+		--color-bg-surface: #17212b;
+		--color-bg-secondary: #242f3d;
+		--color-bg-hover: #2b3948;
+		--color-text-main: #c5d0db;
+		--color-text-secondary: #7d8fa0;
+		--color-text-tertiary: #667888;
+		--color-text-inverse: #0e1621;
+		--color-border: #101921;
+		--color-border-light: #0e1621;
+		--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+		--shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+		--shadow-lg: 0 18px 55px rgba(0, 0, 0, 0.45);
+		--color-heading: #8ebff2;
+		--hero-from: #d7ebff;
+		--hero-mid: #6ab2f2;
+		--hero-to: #9fd4ff;
+		--button-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+		--button-focus-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 0, 0, 0.28);
+		--flow-gradient: linear-gradient(
+			90deg,
+			rgba(106, 178, 242, 0.08) 0%,
+			rgba(106, 178, 242, 0.04) 55%,
+			rgba(158, 212, 255, 0.08) 100%
+		);
+		--pricing-featured-border: color-mix(in srgb, var(--color-primary), transparent 45%);
+		--hero-selection: rgba(106, 178, 242, 0.28);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html:has(#theme-system:checked) {
+			color-scheme: dark;
+			--color-primary: #6ab2f2;
+			--color-primary-hover: #7ec1f9;
+			--color-primary-soft: #1e2c3a;
+			--color-primary-ring: rgba(106, 178, 242, 0.35);
+			--color-bg-body: #0e1621;
+			--color-bg-surface: #17212b;
+			--color-bg-secondary: #242f3d;
+			--color-bg-hover: #2b3948;
+			--color-text-main: #c5d0db;
+			--color-text-secondary: #7d8fa0;
+			--color-text-tertiary: #667888;
+			--color-text-inverse: #0e1621;
+			--color-border: #101921;
+			--color-border-light: #0e1621;
+			--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+			--shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+			--shadow-lg: 0 18px 55px rgba(0, 0, 0, 0.45);
+			--color-heading: #8ebff2;
+			--hero-from: #d7ebff;
+			--hero-mid: #6ab2f2;
+			--hero-to: #9fd4ff;
+			--button-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+			--button-focus-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 0, 0, 0.28);
+			--flow-gradient: linear-gradient(
+				90deg,
+				rgba(106, 178, 242, 0.08) 0%,
+				rgba(106, 178, 242, 0.04) 55%,
+				rgba(158, 212, 255, 0.08) 100%
+			);
+			--pricing-featured-border: color-mix(in srgb, var(--color-primary), transparent 45%);
+			--hero-selection: rgba(106, 178, 242, 0.28);
+		}
+	}
+
+	@media (max-width: 720px) {
+		:root {
+			--flow-gradient: linear-gradient(
+				180deg,
+				rgba(7, 59, 116, 0.022) 0%,
+				rgba(0, 136, 204, 0.014) 55%,
+				rgba(105, 199, 255, 0.024) 100%
+			);
+		}
+
+		html:has(#theme-night:checked) {
+			--flow-gradient: linear-gradient(
+				180deg,
+				rgba(106, 178, 242, 0.08) 0%,
+				rgba(106, 178, 242, 0.04) 55%,
+				rgba(158, 212, 255, 0.08) 100%
+			);
+		}
+	}
+
+	@media (prefers-color-scheme: dark) and (max-width: 720px) {
+		html:has(#theme-system:checked) {
+			--flow-gradient: linear-gradient(
+				180deg,
+				rgba(106, 178, 242, 0.08) 0%,
+				rgba(106, 178, 242, 0.04) 55%,
+				rgba(158, 212, 255, 0.08) 100%
+			);
+		}
 	}
 
 	html {
@@ -241,10 +436,210 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 		font-size: 1rem;
 	}
 
+	.header-logo {
+		color: var(--color-primary);
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+
+	.header-logo .brand-text {
+		font-size: 1.125rem;
+	}
+
+	.header-logo:hover {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
 	.header-cta {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 8px;
+		flex-shrink: 0;
+	}
+
+	.pref-picker {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	.pref-trigger {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0;
+		margin: 0;
+		padding: 0;
+		border: none;
+		border-radius: 4px;
+		background: transparent;
+		color: var(--color-text-main);
+		font-family: inherit;
+		font-size: 0.6875rem;
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: 0.02em;
+		cursor: pointer;
+		transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+	}
+
+	.pref-trigger-icon {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.pref-code {
+		font-size: 0.6875rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		line-height: 1;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.pref-trigger:hover {
+			background-color: color-mix(in srgb, var(--color-primary), transparent 80%);
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+			color: var(--color-primary);
+		}
+	}
+
+	.pref-trigger:active {
+		box-shadow: none;
+	}
+
+	.pref-trigger:focus {
+		outline: none;
+	}
+
+	.pref-trigger:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
+	.theme-picker > summary {
+		list-style: none;
+	}
+
+	.theme-picker > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.theme-icon {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+
+	.theme-icon-night {
+		display: none;
+	}
+
+	html:has(#theme-night:checked) .theme-icon-day {
+		display: none;
+	}
+
+	html:has(#theme-night:checked) .theme-icon-night {
+		display: block;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html:has(#theme-system:checked) .theme-icon-day {
+			display: none;
+		}
+
+		html:has(#theme-system:checked) .theme-icon-night {
+			display: block;
+		}
+	}
+
+	.theme-picker .pref-option {
+		position: relative;
+	}
+
+	.theme-picker .pref-option input {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	.theme-picker .pref-menu {
+		width: max-content;
+	}
+
+	.theme-picker .pref-option,
+	.theme-picker .pref-option:has(input:checked) {
+		font-weight: 500;
+	}
+
+	.theme-picker .pref-option:has(input:checked) {
+		background: var(--color-primary-soft);
+		color: var(--color-primary);
+	}
+
+	.theme-picker .pref-option:has(input:focus-visible) {
+		outline: 2px solid var(--color-primary);
+		outline-offset: -2px;
+	}
+
+	.pref-menu {
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		left: 0;
+		right: auto;
+		z-index: 60;
+		margin: 0;
+		padding: 6px;
+		list-style: none;
+		min-width: max-content;
+		background: var(--color-bg-surface);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		box-shadow: var(--shadow-md);
+	}
+
+	.pref-menu li {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pref-option {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		margin: 0;
+		padding: 0.5rem 0.75rem;
+		border: none;
+		border-radius: 6px;
+		background: transparent;
+		color: var(--color-text-main);
+		font-family: inherit;
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.25;
+		text-align: left;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	.pref-option:hover {
+		background: var(--color-bg-hover);
+	}
+
+	.pref-option[aria-selected="true"] {
+		background: var(--color-primary-soft);
+		color: var(--color-primary);
+		font-weight: 500;
+	}
+
+	.pref-option:focus {
+		outline: none;
+	}
+
+	.pref-option:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: -2px;
 	}
 
 	.button {
@@ -261,7 +656,7 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 		user-select: none;
 		background-color: var(--color-primary);
 		color: var(--color-text-inverse);
-		box-shadow: 0 10px 24px rgba(0, 136, 204, 0.22);
+		box-shadow: var(--button-shadow);
 		transition: transform 0.2s ease, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
 			background-color 0.2s ease-in-out;
 	}
@@ -282,7 +677,7 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 
 	.button:focus-visible {
 		outline: none;
-		box-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 136, 204, 0.22);
+		box-shadow: var(--button-focus-shadow);
 	}
 
 	.footer {
@@ -434,6 +829,19 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 	}
 
 	@media (max-width: 480px) {
+		.header .container {
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+		}
+
+		.header-inner {
+			gap: 8px;
+		}
+
+		.header-cta {
+			gap: 4px;
+		}
+
 		.header-cta .button {
 			padding: 0.45rem 0.75rem;
 		}

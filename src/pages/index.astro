@@ -10,19 +10,31 @@ const heroTitle = "Build or Chat with AI models just like your contacts";
 const heroSubtitle = site.description;
 const faqItems = [
 	{
-		question: "What is model and prototype?",
+		question: "What is a prototype?",
 		answer:
-			"Models are instances of prototypes, different models of the same prototype is treated differently. You may think of models as copies of prototypes",
+			"A prototype is an AI prototype a creator sets up. It has a name, a description, and the address of the station that runs it. The creator can keep it private, or publish it so other people can add it as a model.",
 	},
 	{
-		question: "What is cloud account and local account?",
+		question: "What is a model?",
 		answer:
-			"Cloud accounts are managed by sokoyuku, you can run your own local conductors to manage local accounts.",
+			"A model is your own running use of a prototype. Add a prototype as a model to use it. You can add the same prototype more than once, each with its own name. Each model has its own accounts and chats. Those models all run on that prototype's station.",
 	},
 	{
-		question: "Is it free to use?",
+		question: "What is a station?",
 		answer:
-			"You can access to all features of sokoyuku with either free plan or pro plan, subscription to pro plan gives you more allocated resources. For normal usage, free plan is enough for most cases.",
+			"A station is the program a creator runs to host a prototype. It runs each model of that prototype and produces the replies.",
+	},
+	{
+		question: "What is an account?",
+		answer:
+			"An account is a bot or messaging account you own on Telegram, Discord, Matrix, QQ, or WhatsApp. Connect it and assign it to one model. A model can use more than one account. Messages sent to an account go to its model, and the model replies through that account.",
+	},
+	{
+		question: "What is local vs cloud?",
+		answer: [
+			"A local prototype, its models, and your local accounts are used together on a station you run. The prototype is private and free, and every model of it is a local model. A local account's credentials are encrypted so only that station can read them. That station carries messages between the accounts and corresponding models inside it.",
+			"With cloud, Sokoyuku carries messages between the accounts and corresponding models in the prototype's station.",
+		],
 	},
 ];
 const appSite = "https://app.sokoyuku.com";
@@ -31,7 +43,7 @@ const pricingPlans = [
 		name: "Free",
 		price: "$0",
 		period: "/month",
-		description: "All features included with free plan, limits applied",
+		description: "Access to most features included with free plan, limits applied",
 		ctaLabel: "Start Free",
 		ctaHref: "#cta",
 		featured: false,
@@ -47,13 +59,13 @@ const pricingPlans = [
 		name: "Pro",
 		price: "$9.99",
 		period: "/month",
-		description: "Subscribe for more resources allocated",
+		description: "Access to all features with higher limits",
 		ctaLabel: "Get Pro",
 		ctaHref: "#cta",
 		featured: true,
 		features: [
 			"Up to 60 cloud accounts (valid until subscription end)",
-			"Up to 240 local accounts (Permanent upgrade)",
+			"Up to 240 local accounts (valid until subscription end)",
 			"Up to 240 models (Permanent upgrade)",
 			"Up to 120 prototypes (Permanent upgrade)",
 		],
@@ -66,12 +78,12 @@ const year = new Date().getFullYear();
 <BaseLayout title={site.name} description={site.description} appSite={appSite}>
 	<section class="hero">
 		<div class="container hero-inner">
-			<h1 class="hero-title">{heroTitle}</h1>
+			<h1 class="hero-title" data-i18n={heroTitle}>{heroTitle}</h1>
 			<p class="hero-subtitle">{heroSubtitle}</p>
 
 			<div class="hero-actions" id="cta">
-				<a class="button button-lg" href={appSite}>Start now</a>
-				<a class="button button-lg button-ghost button-ghost-learn" href="#how">Learn more</a>
+				<a class="button button-lg" href={appSite} data-i18n="Start now">Start now</a>
+				<a class="button button-lg button-ghost button-ghost-learn" href="#how" data-i18n="Learn more">Learn more</a>
 			</div>
 		</div>
 	</section>
@@ -79,13 +91,13 @@ const year = new Date().getFullYear();
 	<section class="section section-alt" id="how">
 		<div class="container">
 			<div class="section-head">
-				<h2>How it works</h2>
-				<p>Simple flow from sign-in to your first chat.</p>
+				<h2 data-i18n="Start your chats">Start your chats</h2>
+				<p data-i18n="Simple flow from sign-in to your first chat.">Simple flow from sign-in to your first chat.</p>
 			</div>
 
-			<div class="how-panel" aria-label="Workflow">
+			<div class="how-panel" aria-label="Workflow" data-i18n-aria="Workflow">
 				<div class="how-panel-top">
-					<div class="how-panel-title">Workflow</div>
+					<div class="how-panel-title" data-i18n="Workflow">Workflow</div>
 				</div>
 				<ol class="how-steps">
 					<li class="how-step">
@@ -104,8 +116,8 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="how-step-body">
-							<div class="how-step-title">Sign in</div>
-							<div class="how-step-desc">Create a new account or sign in with existing one</div>
+							<div class="how-step-title" data-i18n="Sign in">Sign in</div>
+							<div class="how-step-desc" data-i18n="Create a new account or sign in with existing one">Create a new account or sign in with existing one</div>
 						</div>
 					</li>
 
@@ -121,9 +133,9 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="how-step-body">
-							<div class="how-step-title">Connect account</div>
-							<div class="how-step-desc">
-								Connect a Telegram/Matrix/Discord account or any local account
+							<div class="how-step-title" data-i18n="Add account">Add account</div>
+							<div class="how-step-desc" data-i18n="Add a Telegram/Matrix/Discord/WhatsApp/QQ account or any local account">
+								Add a Telegram/Matrix/Discord/WhatsApp/QQ account or any local account
 							</div>
 						</div>
 					</li>
@@ -144,8 +156,8 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="how-step-body">
-							<div class="how-step-title">Search prototype</div>
-							<div class="how-step-desc">
+							<div class="how-step-title" data-i18n="Search prototype">Search prototype</div>
+							<div class="how-step-desc" data-i18n="Find a prototype you like">
 								Find a prototype you like
 							</div>
 						</div>
@@ -167,9 +179,9 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="how-step-body">
-							<div class="how-step-title">Create model</div>
-							<div class="how-step-desc">
-								Create a model from the choosen prototype
+							<div class="how-step-title" data-i18n="Create model">Create model</div>
+							<div class="how-step-desc" data-i18n="Create a model from the chosen prototype">
+								Create a model from the chosen prototype
 							</div>
 						</div>
 					</li>
@@ -186,9 +198,9 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="how-step-body">
-							<div class="how-step-title">Open chat</div>
-							<div class="how-step-desc">
-								Select an account for the model and chat immediately
+							<div class="how-step-title" data-i18n="Open chat">Open chat</div>
+							<div class="how-step-desc" data-i18n="Open a chat with the model and start chatting">
+								Open a chat with the model and start chatting
 							</div>
 						</div>
 					</li>
@@ -200,12 +212,12 @@ const year = new Date().getFullYear();
 	<section class="section" id="developers">
 		<div class="container">
 			<div class="section-head">
-				<h2>Developer workflow</h2>
-				<p>Find a template, create your own prototype, then upload your prototype.</p>
+				<h2 data-i18n="Create your own prototype">Create your own prototype</h2>
+				<p data-i18n="Find a template, create your own prototype, then register the prototype.">Find a template, create your own prototype, then register the prototype.</p>
 			</div>
 
-			<div class="how-panel" aria-label="Developer workflow">
-				<div class="flow-steps" aria-label="Developer workflow steps">
+			<div class="how-panel" aria-label="Developer workflow" data-i18n-aria="Developer workflow">
+				<div class="flow-steps" aria-label="Developer workflow steps" data-i18n-aria="Developer workflow steps">
 					<div class="flow-step">
 						<div class="how-step-icon" aria-hidden="true">
 							<svg
@@ -222,9 +234,9 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="flow-step-body">
-							<div class="how-step-title">Find templates</div>
+							<div class="how-step-title" data-i18n="Find templates">Find templates</div>
 							<div class="how-step-desc">
-								Start from official templates on GitHub:
+								<span data-i18n="Start from official templates on GitHub:">Start from official templates on GitHub:</span>
 								<a
 									href="https://github.com/sokoyuku"
 									target="_blank"
@@ -247,8 +259,8 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="flow-step-body">
-							<div class="how-step-title">Create your own prototype</div>
-							<div class="how-step-desc">
+							<div class="how-step-title" data-i18n="Create your own prototype">Create your own prototype</div>
+							<div class="how-step-desc" data-i18n="Clone a template and tailor it to your needs.">
 								Clone a template and tailor it to your needs.
 							</div>
 						</div>
@@ -272,9 +284,9 @@ const year = new Date().getFullYear();
 							</svg>
 						</div>
 						<div class="flow-step-body">
-							<div class="how-step-title">Run station</div>
-							<div class="how-step-desc">
-								Run station and upload the prototype automatically.
+							<div class="how-step-title" data-i18n="Run station">Run station</div>
+							<div class="how-step-desc" data-i18n="Sign in and run station to register the prototype.">
+								Sign in and run station to register the prototype.
 							</div>
 						</div>
 					</div>
@@ -286,33 +298,29 @@ const year = new Date().getFullYear();
 	<section class="section" id="security">
 		<div class="container">
 			<div class="section-head">
-				<h2>Security-minded</h2>
-				<p>
-					Security built into authentication, data handling, and platform
-					operations.
-				</p>
+				<h2 data-i18n="Keep your data safe">Keep your data safe</h2>
+				<p data-i18n="How Sokoyuku keeps your data safe, and what you can do to keep them safe.">How Sokoyuku keeps your data safe, and what you can do to keep them safe.</p>
 			</div>
 
-			<div class="security-row" aria-label="Security highlights">
+			<div class="security-row" aria-label="Security highlights" data-i18n-aria="Security highlights">
 				<div class="security-item">
-					<div class="security-title">Secrets guarded</div>
-					<div class="security-desc">
-						Tokens and credentials protected and scoped to the right
-						accounts.
+					<div class="security-title" data-i18n="Sign-in and payments">Sign-in and payments</div>
+					<div class="security-desc" data-i18n="Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Stripe handles the card, and Sokoyuku does not store the card number.">
+						Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Stripe handles the card, and Sokoyuku does not store the card number.
 					</div>
 				</div>
 
 				<div class="security-item">
-					<div class="security-title">No message stored</div>
-					<div class="security-desc">
-						Focus on safe operation without persisting message bodies.
+					<div class="security-title" data-i18n="Messages">Messages</div>
+					<div class="security-desc" data-i18n="Sokoyuku does not keep the content of your messages. It keeps metadata of messages for a limited time, such as which account and chat a message belonged to, and when. Voice calls are not recorded.">
+						Sokoyuku does not keep the content of your messages. It keeps metadata of messages for a limited time, such as which account and chat a message belonged to, and when. Voice calls are not recorded.
 					</div>
 				</div>
 
 				<div class="security-item">
-					<div class="security-title">Local conductor</div>
-					<div class="security-desc">
-						Run a local conductor for maximum control over routing.
+					<div class="security-title" data-i18n="Run your own station">Run your own station</div>
+					<div class="security-desc" data-i18n="You may run your own station for a local prototype, its models, and your local accounts. Local accounts' credentials and local model settings are encrypted so only that station can read them. That station handles the messages.">
+						You may run your own station for a local prototype, its models, and your local accounts. Local accounts' credentials and local model settings are encrypted so only that station can read them. That station handles the messages.
 					</div>
 				</div>
 			</div>
@@ -322,34 +330,35 @@ const year = new Date().getFullYear();
 	<section class="section section-alt" id="pricing">
 		<div class="container">
 			<div class="section-head">
-				<h2>Pricing</h2>
-				<p>Choose the platform tier that suits your needs.</p>
+				<h2 data-i18n="Pricing">Pricing</h2>
+				<p data-i18n="Choose a plan that suits your needs.">Choose a plan that suits your needs.</p>
 			</div>
 
-			<div class="pricing-grid" aria-label="Pricing plans">
+			<div class="pricing-grid" aria-label="Pricing plans" data-i18n-aria="Pricing plans">
 				{pricingPlans.map((plan) => (
 					<article class:list={["pricing-card", plan.featured && "pricing-card-featured"]}>
 						<div class="pricing-top">
 							<div>
-								<div class="pricing-name">{plan.name}</div>
-								<p class="pricing-desc">{plan.description}</p>
+								<div class="pricing-name" data-i18n={plan.name}>{plan.name}</div>
+								<p class="pricing-desc" data-i18n={plan.description}>{plan.description}</p>
 							</div>
 						</div>
 
 						<div class="pricing-price-row">
 							<span class="pricing-price">{plan.price}</span>
-							<span class="pricing-period">{plan.period}</span>
+							<span class="pricing-period" data-i18n={plan.period}>{plan.period}</span>
 						</div>
 
 						<ul class="pricing-features">
 							{plan.features.map((feature) => (
-								<li>{feature}</li>
+								<li data-i18n={feature}>{feature}</li>
 							))}
 						</ul>
 
 						<a
 							class:list={["button", "button-lg", !plan.featured && "button-ghost", !plan.featured && "button-ghost-learn"]}
 							href={plan.featured ? `${appSite}?plan=pro` : appSite}
+							data-i18n={plan.ctaLabel}
 						>
 							{plan.ctaLabel}
 						</a>
@@ -358,7 +367,6 @@ const year = new Date().getFullYear();
 			</div>
 
 			<p class="pricing-footnote">
-				*Platform subscriptions are separate from any subscription-based prototype pricing.
 			</p>
 		</div>
 	</section>
@@ -366,17 +374,19 @@ const year = new Date().getFullYear();
 	<section class="section section-alt" id="faq">
 		<div class="container">
 			<div class="section-head">
-				<h2>FAQ</h2>
+				<h2 data-i18n="FAQ">FAQ</h2>
 			</div>
 
 			<div class="faq">
 				{faqItems.map((item) => (
 					<details class="qa">
 						<summary>
-							<span>{item.question}</span>
+							<span data-i18n={item.question}>{item.question}</span>
 							<span class="qa-toggle" aria-hidden="true"></span>
 						</summary>
-						<p>{item.answer}</p>
+						{(Array.isArray(item.answer) ? item.answer : [item.answer]).map((paragraph) => (
+							<p data-i18n={paragraph}>{paragraph}</p>
+						))}
 					</details>
 				))}
 			</div>
@@ -400,7 +410,7 @@ const year = new Date().getFullYear();
 		user-select: none;
 		background-color: var(--color-primary);
 		color: var(--color-text-inverse);
-		box-shadow: 0 10px 24px rgba(0, 136, 204, 0.22);
+		box-shadow: var(--button-shadow);
 		transition: transform 0.2s ease, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
 			background-color 0.2s ease-in-out;
 	}
@@ -421,11 +431,11 @@ const year = new Date().getFullYear();
 
 	.button:focus-visible {
 		outline: none;
-		box-shadow: 0 0 0 4px var(--color-primary-ring), 0 10px 24px rgba(0, 136, 204, 0.22);
+		box-shadow: var(--button-focus-shadow);
 	}
 
 	.button-ghost {
-		background-color: white;
+		background-color: var(--color-bg-surface);
 		border-color: var(--color-border);
 		color: var(--color-text-main);
 		box-shadow: none;
@@ -440,7 +450,7 @@ const year = new Date().getFullYear();
 	}
 
 	.button-ghost-learn:hover {
-		background: white;
+		background: var(--color-bg-surface);
 		color: var(--color-success);
 	}
 
@@ -465,7 +475,7 @@ const year = new Date().getFullYear();
 		font-size: clamp(1.55rem, 2.1vw, 1.9rem);
 		letter-spacing: -0.5px;
 		font-weight: 800;
-		color: #4A90D9;
+		color: var(--color-heading);
 	}
 
 	.section-head p {
@@ -602,12 +612,7 @@ const year = new Date().getFullYear();
 		align-items: stretch;
 		justify-content: center;
 		gap: 0;
-		background: linear-gradient(
-			90deg,
-			rgba(7, 59, 116, 0.022) 0%,
-			rgba(0, 136, 204, 0.014) 55%,
-			rgba(105, 199, 255, 0.024) 100%
-		);
+		background: var(--flow-gradient);
 	}
 
 	.flow-step {
@@ -631,12 +636,6 @@ const year = new Date().getFullYear();
 		.flow-steps {
 			flex-direction: column;
 			align-items: stretch;
-			background: linear-gradient(
-				180deg,
-				rgba(7, 59, 116, 0.022) 0%,
-				rgba(0, 136, 204, 0.014) 55%,
-				rgba(105, 199, 255, 0.024) 100%
-			);
 		}
 
 		.flow-step + .flow-step {
@@ -726,7 +725,7 @@ const year = new Date().getFullYear();
 			color-mix(in srgb, var(--color-bg-surface), var(--color-primary-soft) 42%),
 			var(--color-bg-surface)
 		);
-		border-color: color-mix(in srgb, var(--color-primary), white 60%);
+		border-color: var(--pricing-featured-border);
 	}
 
 	.pricing-top {
@@ -923,14 +922,14 @@ const year = new Date().getFullYear();
 
     @supports (-webkit-background-clip: text) {
         .hero-title {
-            background: linear-gradient(90deg, #073b74 0%, #0088cc 48%, #69c7ff 100%);
+            background: linear-gradient(90deg, var(--hero-from) 0%, var(--hero-mid) 48%, var(--hero-to) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .hero-title::selection {
             -webkit-text-fill-color: var(--color-text-main);
-            background: rgba(0, 136, 204, 0.14);
+            background: var(--hero-selection);
         }
     }
 
@@ -969,5 +968,3 @@ const year = new Date().getFullYear();
         }
     }
 </style>
-	</body>
-</html>

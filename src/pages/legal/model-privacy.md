@@ -8,16 +8,16 @@ description: "Standard Privacy Policy for Models on Sokoyuku."
 # Standard Model Privacy Policy
 
 **Effective Date:** July 21, 2026
-**Last Updated:** July 21, 2026
+**Last Updated:** October 3, 2026
 
-The following serves as a standard Privacy Policy for models (instances of prototypes) on the Sokoyuku platform. By design, this policy is written to be generally applicable to a wide range of models. While this document serves as a functional agreement between Prototype Creators and Model Users, Creators are encouraged to provide additional privacy disclosures if their specific models or third-party integrations require it.
+The following serves as a standard Privacy Policy for models hosted by creators on the Sokoyuku SaaS platform. Sokoyuku allows and facilitates users to use those models in supported third-party messaging apps. Users can use Sokoyuku to manage accounts or bots of those apps and add and chat with models. Creators can use Sokoyuku to enable messaging between users' accounts or bots and models. By design, this policy is written to be generally applicable to a wide range of models. While this document serves as a functional agreement between Prototype Creators and Model Users, Creators are encouraged to provide additional privacy disclosures if their specific models or third-party integrations require it.
 
 ## 1. Terms and Definitions
 1.1. **Sokoyuku** – Sokoyuku Limited.
-1.2. **Platform** – The Sokoyuku Platform.
-1.3. **Creator** – The person or legal entity who designs, configures, and publishes the prototype, making it available as a model.
-1.4. **Model** – The active instance of a prototype created by the Creator, made available to users on the Platform.
-1.5. **User** – The person accessing the Model via their connected accounts (e.g., Telegram, Discord, Matrix).
+1.2. **Platform** – The Sokoyuku SaaS platform.
+1.3. **Creator** – The person or legal entity who designs, configures, and publishes the prototype, hosts the Model, and uses Sokoyuku to enable messaging between users' accounts or bots and the Model.
+1.4. **Model** – An instance of a prototype, hosted by the Creator. Sokoyuku does not host the Model.
+1.5. **User** – The person who uses Sokoyuku to manage an account or bot of a supported third-party messaging app and to add and chat with the Model. Supported apps include Telegram, Discord, Matrix, QQ, and WhatsApp, and are not limited to those apps. When the Creator enables calls, the User may also place a voice call in the Sokoyuku app.
 1.6. **Policy** – This document, governing the privacy relationship between the Creator and the User.
 
 ## 2. General Provisions
@@ -28,13 +28,13 @@ The following serves as a standard Privacy Policy for models (instances of proto
 2.5. Your continued access to and use of the Model shall constitute your acceptance of this Policy and the [Standard Contract Between Model User and Prototype Creator](/legal/creator-contract).
 
 ## 3. Disclaimers
-3.1. The Model is an independent application configured by the Creator that is neither maintained, endorsed, nor affiliated with Sokoyuku.
+3.1. The Model is hosted by the Creator. It is neither maintained, endorsed, nor affiliated with Sokoyuku. Sokoyuku allows and facilitates the User to add and chat with the Model in supported third-party messaging apps. The Creator uses Sokoyuku to enable messaging between the User's account or bot and the Model.
 3.2. You acknowledge and warrant that you possess all the necessary rights and permissions to use the Model in compliance with applicable local laws.
 
 ## 4. Collection and Processing of Data
 4.1. The Model only requests, collects, and processes data that is necessary for its designated features to function properly.
 4.2. **Data Processing and Monitoring:** The Creator may log, store, or monitor the User's inputs and the Model's outputs solely to the extent necessary to provide the Model's core functionality, maintain system security, and detect violations of applicable rules or Terms of Service. Any data stored for these purposes must be retained only for as long as reasonably necessary to fulfill these operational requirements.
-4.3. **No Sokoyuku Liability:** Sokoyuku is entirely not responsible and bears no liability whatsoever for the Creator's logging, storage, monitoring, or any potential mishandling of User data.
+4.3. **No Sokoyuku Liability:** Sokoyuku is not responsible and bears no liability for the Creator's logging, storage, monitoring, or any potential mishandling of User data.
 4.4. **No Training by Default:** By default, the Creator shall not use the User's inputs or outputs to train or fine-tune any models. The Creator may only use User data for training purposes if they provide a custom privacy policy that explicitly discloses this practice and supersedes this clause.
 4.5. **Third-Party APIs:** The Creator must ensure any third-party APIs used by the prototype are configured to not use User data for training, unless explicitly disclosed otherwise in the Creator's custom privacy policy.
 4.6. **No Secondary Monetization:** The Creator does not monetize or otherwise utilize User data for applications outside the scope of the Model interaction.
@@ -45,6 +45,6 @@ The following serves as a standard Privacy Policy for models (instances of proto
 5.2. User information is handled, transferred, and stored in compliance with applicable laws, including all necessary precautions to prevent unauthorized access, modification, deletion, or distribution.
 
 ## 6. Rights and Obligations
-6.1. Sokoyuku does not store the content of messages sent between the User and the Model. However, Sokoyuku may block, terminate, or delete the connection, routing metadata, or the Model itself from its servers in response to abuse of the Platform by either the User or the Creator.
+6.1. The Creator hosts the Model. It runs at the address the Creator supplies. Sokoyuku does not host the Model, does not generate the Model's outputs, and does not keep message text. Sokoyuku enables messaging between the User's account or bot and the Model so the User can chat with the Model, and may relay those messages. If the Creator enables calls, Sokoyuku may relay the call signaling and the call media, and does not keep a recording of the call. Sokoyuku may end the connection or remove the Model from the Service if either party abuses the Platform.
 6.2. The Creator shall comply with the stipulations set forth in this Policy. If the Creator logs or stores User data as permitted under Section 4.2, the Creator must provide an easily accessible avenue (e.g., a contact email, a support channel, or an automated command within the Model) for Users to exercise their rights to access, amend, or delete their data under applicable law.
 6.3. The User may exercise their right to amend, restrict, or object to the processing of their data, or revoke any previously given consent at any time, by discontinuing their use of the Model.
