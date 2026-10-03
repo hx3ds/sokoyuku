@@ -745,48 +745,116 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 	}
 
 	.legal-document {
-		max-width: 64rem;
+		max-width: 56rem;
 		margin: 2rem auto 4rem;
-		padding: 2rem;
+		padding: 2.5rem 2rem 3rem;
 		border: 1px solid var(--color-border);
 		border-radius: 16px;
 		background: var(--color-bg-surface);
 		box-shadow: var(--shadow-sm);
+		overflow-wrap: break-word;
+	}
+
+	.legal-document > :first-child {
+		margin-top: 0;
 	}
 
 	.legal-document h1,
 	.legal-document h2,
 	.legal-document h3 {
+		color: var(--color-text-main);
+		font-weight: 600;
 		line-height: 1.25;
 		letter-spacing: -0.02em;
 	}
 
 	.legal-document h1 {
-		margin-top: 0;
-		font-size: clamp(2rem, 4vw, 2.8rem);
+		margin: 0 0 0.25rem;
+		font-size: clamp(1.85rem, 4vw, 2.35rem);
 	}
 
 	.legal-document h2 {
-		margin-top: 2rem;
-		font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+		margin: 2.25rem 0 0.75rem;
+		font-size: 1.3rem;
 	}
 
 	.legal-document h3 {
-		margin-top: 1.5rem;
+		margin: 1.6rem 0 0.45rem;
 		font-size: 1.05rem;
+	}
+
+	.legal-document p {
+		margin: 0.85rem 0;
+		text-wrap: pretty;
+	}
+
+	.legal-document h1 + p {
+		margin: 0.85rem 0 0;
+		font-size: 0.9375rem;
+	}
+
+	.legal-document h1 + p + p {
+		margin: 0.15rem 0 1.15rem;
+		font-size: 0.9375rem;
+	}
+
+	.legal-document ul,
+	.legal-document ol {
+		margin: 0.75rem 0;
+		padding-left: 1.4rem;
+	}
+
+	.legal-document ul {
+		list-style: disc;
+	}
+
+	.legal-document ol {
+		list-style: decimal;
+	}
+
+	.legal-document ul ul {
+		list-style: circle;
+	}
+
+	.legal-document li {
+		margin: 0.4rem 0;
+		padding-left: 0.2rem;
+	}
+
+	.legal-document li::marker {
+		color: var(--color-text-secondary);
+	}
+
+	.legal-document li > ul,
+	.legal-document li > ol {
+		margin: 0.3rem 0;
+	}
+
+	.legal-document li > p {
+		margin: 0.35rem 0;
 	}
 
 	.legal-document p,
 	.legal-document li,
 	.legal-document td,
-	.legal-document th,
 	.legal-document blockquote {
 		color: var(--color-text-main);
 	}
 
+	.legal-document h1 + p,
+	.legal-document h1 + p + p {
+		color: var(--color-text-secondary);
+	}
+
 	.legal-document a {
 		color: var(--color-primary);
-		text-decoration: none;
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+	}
+
+	.legal-document a:hover {
+		color: var(--color-primary-hover);
 	}
 
 	.legal-document hr {
@@ -796,35 +864,49 @@ const isLegal = Astro.url.pathname.startsWith("/legal/");
 	}
 
 	.legal-document table {
+		display: table;
 		width: 100%;
+		margin: 1.15rem 0 1.4rem;
 		border-collapse: collapse;
-		display: block;
-		overflow-x: auto;
+		font-size: 0.9375rem;
+		line-height: 1.5;
 	}
 
 	.legal-document th,
 	.legal-document td {
-		padding: 0.75rem;
+		padding: 0.7rem 0.75rem;
 		border: 1px solid var(--color-border);
 		vertical-align: top;
+		text-align: left;
+	}
+
+	.legal-document th {
+		background: var(--color-bg-secondary);
+		color: var(--color-text-main);
+		font-weight: 600;
 	}
 
 	.legal-document blockquote {
-		margin: 1.5rem 0;
-		padding-left: 1rem;
-		border-left: 4px solid rgba(0, 136, 204, 0.2);
+		margin: 1.25rem 0;
+		padding: 0.15rem 0 0.15rem 1rem;
+		border-left: 3px solid color-mix(in srgb, var(--color-primary), transparent 55%);
+		color: var(--color-text-secondary);
 	}
 
 	.legal-document code {
+		padding: 0.1em 0.35em;
+		border-radius: 4px;
+		background: var(--color-bg-secondary);
 		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
 			"Courier New", monospace;
+		font-size: 0.9em;
 	}
 
 	@media (max-width: 720px) {
 		.legal-document {
-			padding: 1.25rem;
+			padding: 1.35rem 1rem 1.75rem;
 			border-radius: 12px;
-			margin: 1rem auto 4rem;
+			margin: 1rem 0.75rem 3rem;
 		}
 	}
 
