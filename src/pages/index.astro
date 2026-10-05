@@ -39,7 +39,7 @@ const faqItems = [
 	{
 		question: "How do model payments and subscriptions work?",
 		answer:
-			"Paid access to a model is a one-time direct charge set by the creator and processed on the creator's Stripe account. It does not auto-renew and does not save your card. Platform subscriptions are separate, optional monthly plans billed by Sokoyuku for higher account, prototype, and model limits.",
+			"Paid access to a model is a one-time direct charge set by the creator and processed on the creator's connected payment account with a supported payment processor. It does not auto-renew and does not save your card or payment method. Platform subscriptions are separate, optional monthly plans billed by Sokoyuku for higher account, prototype, and model limits.",
 	},
 	{
 		question: "Does Sokoyuku host the models or store chat messages?",
@@ -315,8 +315,8 @@ const year = new Date().getFullYear();
 			<div class="security-row" aria-label="Security highlights" data-i18n-aria="Security highlights">
 				<div class="security-item">
 					<div class="security-title" data-i18n="Sign-in and payments">Sign-in and payments</div>
-					<div class="security-desc" data-i18n="Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Stripe handles the card, and Sokoyuku does not store the card number.">
-						Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Stripe handles the card, and Sokoyuku does not store the card number.
+					<div class="security-desc" data-i18n="Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Third-party payment processors handle payment details, and Sokoyuku does not store card numbers or sensitive payment credentials.">
+						Your password is stored only as a hash. If you sign in with Google or Telegram, Sokoyuku stores the account identifier they send. Third-party payment processors handle payment details, and Sokoyuku does not store card numbers or sensitive payment credentials.
 					</div>
 				</div>
 

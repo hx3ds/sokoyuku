@@ -21,7 +21,7 @@ A cookie is a small file a site stores on your device so it can recognize you.
 
 Sokoyuku sets a sign-in cookie so you can stay signed in. It stays on your device until it expires or you sign out. That cookie is required for sign-in. We do not use analytics cookies, advertising cookies, web beacons, or email tracking pixels.
 
-Stripe may set cookies when you pay. A model payment does not save the card. A platform subscription may keep a payment method with Stripe so it can renew.
+Payment processors may set cookies, local storage tokens, or security identifiers when you pay (such as for fraud prevention, session integrity, or 3D Secure verification). A model payment does not save your card or payment method credentials. A platform subscription may keep a payment method with the payment processor so it can renew.
 
 If you sign in with Google or Telegram, that provider's sign-in button loads the provider's script. The provider may set cookies on its own site.
 
@@ -31,7 +31,7 @@ Language and theme are stored in your browser's local storage, not in a cookie. 
 
 ## 3. How Can I Control Cookies?
 
-The sign-in cookie is strictly necessary to keep you signed in. You can set your browser to accept or refuse cookies. If you refuse the sign-in cookie, you may still use parts of the website, but sign-in and payment may not work. Stripe, Google, Telegram, and Cloudflare control the cookies they set when you use their features. The steps differ by browser. See your browser's help menu for instructions.
+The sign-in cookie is strictly necessary to keep you signed in. You can set your browser to accept or refuse cookies. If you refuse the sign-in cookie, you may still use parts of the website, but sign-in and payment may not work. Third-party providers (including payment processors, Google, Telegram, and Cloudflare) control the cookies they set when you use their features. The steps differ by browser. See your browser's help menu for instructions.
 
 ## 4. Updates to This Cookie Policy
 

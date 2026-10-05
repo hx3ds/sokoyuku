@@ -121,18 +121,18 @@ If you host a station:
 
 ### 5.1 Two Kinds of Payment
 
-- **Model payments:** Paid access to a model is a one-time charge. It does not auto-renew and does not save the card. You may buy one or more periods, and you may pay again while access is still running. Access lasts until the end date Sokoyuku records and does not continue on its own. A prototype may offer a free tier and paid tiers. The tier, price, and interval are shown when you pay. Free access, where offered, lasts only for the period granted. The billing interval is daily or monthly.
+- **Model payments:** Paid access to a model is a one-time charge. It does not auto-renew and does not save your card or payment method. You may buy one or more periods, and you may pay again while access is still running. Access lasts until the end date Sokoyuku records and does not continue on its own. A prototype may offer a free tier and paid tiers. The tier, price, and interval are shown when you pay. Free access, where offered, lasts only for the period granted. The billing interval is daily or monthly.
 - **Platform subscriptions:** Sokoyuku offers separate plans for platform features, such as higher limits. They renew until you cancel. Buying a platform plan is optional.
 
 ### 5.2 Payment Processing
 
-Stripe charges the payment method. Sokoyuku does not store card numbers. A model payment is paid directly to the Creator's Stripe Connect account. The amount charged, other than the application fee, is paid to the Creator. Sokoyuku collects only an application fee. A platform subscription is charged on Sokoyuku's Stripe account. Prices are in the currency shown at checkout. Your payment is also subject to Stripe's terms. Sokoyuku is not liable for delays or failures of the payment provider.
+Payments are processed by our third-party payment processors. Sokoyuku does not store payment card numbers or sensitive payment credentials. A model payment is paid directly to the Creator's connected payment account with a supported payment processor. The amount charged, other than the platform or application fee, is paid to the Creator. Sokoyuku collects only an application or platform fee. A platform subscription is charged to Sokoyuku's payment processing account. Prices are in the currency shown at checkout. Your payment is also subject to the terms and privacy policy of the applicable payment processor. Sokoyuku is not liable for delays, errors, or failures of the payment processor.
 
 ### 5.3 Renewal, Saved Cards, and Price Changes
 
-A platform subscription renews until you cancel it in your account settings. Stripe may keep a payment method for that renewal. Paid platform features continue until the end of the period already paid.
+A platform subscription renews until you cancel it in your account settings. The payment processor may securely retain a payment method for that renewal. Paid platform features continue until the end of the period already paid.
 
-A model payment does not renew and does not save the card. There is nothing to cancel.
+A model payment does not renew and does not save your payment method. There is nothing to cancel.
 
 If we raise the price of a platform plan, we will give at least thirty (30) days' notice before charging the new price. Cancel before then if you do not agree. The Creator sets the price of a model payment. A price change does not change access already paid for. The new price applies to the next charge.
 
@@ -147,9 +147,9 @@ If a model payment does not succeed, no access is granted for that charge. Acces
 **All sales are final and non-refundable**, except where mandatory law in the payer's jurisdiction requires otherwise, where we confirm a platform billing error under this section, where we discontinue a Sokoyuku-billed plan and refund prepaid unused platform fees as described in Section 13, or where we issue a discretionary refund of a platform subscription.
 
 - **Platform subscriptions:** If you believe Sokoyuku charged your platform subscription in error, notify us in writing at [support@sokoyuku.com](mailto:support@sokoyuku.com) within thirty (30) days of the charge or statement in which the error first appeared. If we confirm the charge was erroneous, we refund it. Discretionary refunds, if any, are decided by Sokoyuku for platform charges only. Sokoyuku is the only party that initiates a platform subscription refund.
-- **Model payments:** The Creator is the merchant of record and may refund a model payment from the Creator's Stripe Dashboard. Sokoyuku refunds a model payment only where the law requires it, where we confirm a billing error under this section, or where the Creator asks us to. A successful refund, including a partial refund, shortens the access that charge paid for. A partial refund shortens it in proportion to the amount refunded. A Creator's own goodwill policy does not bind Sokoyuku.
-- You agree not to make unjustified requests for a refund or unjustified chargeback requests to your payment card provider.
-- If you make a purchase that results in a chargeback, Sokoyuku reserves the right to immediately suspend or permanently terminate your account.
+- **Model payments:** The Creator is the merchant of record and may refund a model payment through the Creator's payment processor dashboard or account portal. Sokoyuku refunds a model payment only where the law requires it, where we confirm a billing error under this section, or where the Creator asks us to. A successful refund, including a partial refund, shortens the access that charge paid for. A partial refund shortens it in proportion to the amount refunded. A Creator's own goodwill policy does not bind Sokoyuku.
+- You agree not to make unjustified requests for a refund or unjustified dispute or chargeback requests to your payment provider, financial institution, or payment card issuer.
+- If you make a purchase that results in an unjustified dispute or chargeback, Sokoyuku reserves the right to immediately suspend or permanently terminate your account.
 - Disputes and chargebacks on model payments, and their fees, stay with the Creator. Sokoyuku is not responsible for them. A lost dispute shortens the access that charge paid for. If that dispute is later won, that access is restored.
 - Disputes on platform subscriptions stay with Sokoyuku. Sokoyuku bears those dispute fees.
 
@@ -171,13 +171,13 @@ If you are a consumer residing in the European Economic Area (EEA) or the United
 
 ### 6.1 Merchants of Record and Direct Charges
 
-Prototype Creators are merchants of record for model payments. Model Users pay the Creator directly on the Creator's Stripe Connect account. The amount charged, other than the application fee, is paid to the Creator. Sokoyuku collects only an application fee. The Creator pays Stripe's fees, including processing, foreign exchange, payouts, and disputes. Platform subscriptions are separate, optional, and charged on Sokoyuku's Stripe account.
+Prototype Creators are merchants of record for model payments. Model Users pay the Creator directly on the Creator's connected payment account with a supported payment processor. The amount charged, other than the platform or application fee, is paid to the Creator. Sokoyuku collects only an application or platform fee. The Creator pays all fees assessed by the payment processor, including processing, foreign exchange, payout, and dispute fees. Platform subscriptions are separate, optional, and charged on Sokoyuku's payment processing account.
 
-A Creator can publish a paid prototype only after a Stripe Connect account is set up.
+A Creator can publish a paid prototype only after a connected payment account with a supported payment processor is set up and approved.
 
-### 6.2 Stripe Connect Account and Payouts
+### 6.2 Connected Payment Accounts and Payouts
 
-To receive model payments, a Creator must keep a Stripe Connect account in good standing and complete the checks Stripe requires. By connecting, you agree to Stripe's terms. You choose your country, whether you connect as an individual or a company, and your currency. Payouts are managed in your Stripe Dashboard. Sokoyuku does not hold Creator funds and does not run Creator payouts. Sokoyuku is not liable for payout delays caused by Stripe.
+To receive model payments, a Creator must maintain a connected payment account in good standing with a supported payment processor (whether established through the processor's onboarding flow or linked via delegated authorization such as OAuth) and complete all verification, identity, and compliance checks the payment processor requires. By connecting, you agree to the applicable payment processor's terms and conditions. You choose your country, whether you connect as an individual or a business entity, and your currency. Payouts or transfers are managed directly through your payment processor account portal. Sokoyuku does not hold Creator funds and does not run Creator payouts. Sokoyuku is not liable for payout delays, holds, or failures caused by the payment processor.
 
 If that account is missing, restricted, closed, or disconnected, or tax collection has not been set up, Sokoyuku will not accept a new model payment. A paid prototype in that state is hidden, and new models cannot be added to it. Access already paid for continues.
 
@@ -187,7 +187,7 @@ Sokoyuku is not responsible for disputes, chargebacks, or their fees on model pa
 
 ### 6.4 Tax Compliance
 
-Creators are merchants of record for model payments and are responsible for their own tax, including registration, filing, remittance, and any forms Stripe requires. Sokoyuku does not remit tax on model payments. You warrant that you report payments you receive through Sokoyuku as the law requires. Sokoyuku is not liable for a Creator's unpaid tax. Until Stripe's requirements are met, the limits in Section 6.2 apply.
+Creators are merchants of record for model payments and are responsible for their own tax, including registration, filing, remittance, and any tax forms the payment processor or competent tax authorities require. Sokoyuku does not remit tax on model payments. You warrant that you report payments you receive through Sokoyuku as the law requires. Sokoyuku is not liable for a Creator's unpaid tax. Until all payment processor and tax compliance requirements are met, the limits in Section 6.2 apply.
 
 ### 6.5 Creator Payment Support
 
@@ -198,7 +198,7 @@ Where a Prototype Creator offers models or prototypes to consumers located in th
 
 1. **Objective Grounds for Restriction, Suspension, and Termination:** Sokoyuku may restrict visibility, suspend, or terminate a Creator's prototype, model, or account based on specific objective grounds:
    - Breach of these Terms, including Section 8 (Acceptable Use);
-   - Stripe Connect account suspension, deauthorization, restriction, or failure to complete required identity, KYC, AML, or tax verification;
+   - Connected payment account suspension, deauthorization, restriction, or failure to complete required identity, KYC, AML, or tax verification;
    - Intellectual property infringement or receipt of valid DMCA or copyright notices under Section 7.4;
    - Technical failures, security vulnerabilities, or malicious conduct arising from the Creator's host or model;
    - Compliance with legal, regulatory, or judicial orders;
@@ -211,10 +211,10 @@ Where a Prototype Creator offers models or prototypes to consumers located in th
    - During the notice period, the Creator has the right to terminate their agreement with Sokoyuku before the changes become effective.
    - The notice period does not apply where changes are required by law or to address unforeseen and imminent cybersecurity, malware, or fraud risks.
 4. **Ranking Parameters (P2B Art. 5):**
-   - Public prototypes in the Sokoyuku directory and search results are ranked primarily based on: (a) text relevance matching search queries (title, tags, and description); (b) recency of publication or update; (c) active interaction volume and model usage; and (d) active Stripe Connect and availability status.
+   - Public prototypes in the Sokoyuku directory and search results are ranked primarily based on: (a) text relevance matching search queries (title, tags, and description); (b) recency of publication or update; (c) active interaction volume and model usage; and (d) active connected payment account and availability status.
    - Sokoyuku does not offer paid placement, sponsored ranking boosts, or preferential ranking for its own services over Creator prototypes.
 5. **Data Access (P2B Art. 9):**
-   - Creators have direct access to transaction data, gross receipts, and customer refund records through their Stripe Connect Dashboard. Within Sokoyuku, Creators have access to aggregate prototype usage metrics and active subscriber numbers.
+   - Creators have direct access to transaction data, gross receipts, and customer refund records through their payment processor dashboard or portal. Within Sokoyuku, Creators have access to aggregate prototype usage metrics and active subscriber numbers.
    - Sokoyuku has access to technical logs, platform metrics, and routing metadata (retained for up to 30 days) to operate and secure the Service. Neither party has access to personal data beyond that necessary to deliver the Service and fulfill transactions.
 6. **Dispute Resolution & Small Enterprise Exemption (P2B Arts. 11 & 12):**
    - Pursuant to Article 11(5) and Article 12(1) of Regulation (EU) 2019/1150, Sokoyuku qualifies as a small/micro enterprise and is exempt from the statutory obligations to maintain a formalized internal complaint-handling system and to identify mandatory external mediators.
@@ -293,7 +293,7 @@ By using the Service, you agree not to use Sokoyuku for any illegal, harmful, or
 Sokoyuku operates as a software-driven SaaS platform. In accordance with Article 19(1) of Regulation (EU) 2022/2065 (Digital Services Act), Sokoyuku qualifies as a micro-enterprise and is exempt from the obligations under Section 3 of Chapter III of the DSA (including internal complaint-handling systems under Art. 20, out-of-court dispute settlement under Art. 21, and annual transparency reports under Art. 24).
 
 We employ reasonable, proportionate measures to detect, investigate, and address violations of these Terms:
-- **Automated Screening:** We utilize automated bot protection and security screening (e.g., Cloudflare Turnstile, automated IP rate limiting, and Stripe radar risk scoring) to detect automated abuse, credential stuffing, and payment fraud.
+- **Automated Screening:** We utilize automated bot protection and security screening (e.g., Cloudflare Turnstile, automated IP rate limiting, and payment processor fraud risk scoring) to detect automated abuse, credential stuffing, and payment fraud.
 - **Human Review:** Content, prototype listings, or models reported by users or authorities are reviewed manually to assess compliance with these Terms, legal requirements, and acceptable use standards.
 - **Proportionality:** Enforcement decisions are taken with due regard to freedom of expression, proportionality, and the rights of all affected parties.
 
@@ -367,8 +367,8 @@ You agree to defend, indemnify, and hold harmless Sokoyuku Limited, its affiliat
 You may ask us to close your account by contacting [support@sokoyuku.com](mailto:support@sokoyuku.com).
 
 ### 13.2 Termination by Sokoyuku
-Subject to Section 6.6 (Platform-to-Business terms for eligible Creators) and applicable mandatory consumer protection laws, we may suspend or terminate your account, your access to the Service, or any prototype or model you operate at any time, with or without notice, based on reasonable grounds including violation of these Terms, failure to pay fees, Stripe Connect or tax non-compliance, or actions that pose a legal or security risk to Sokoyuku.
-- If we terminate your account for violating these Terms, any prepaid platform subscription fees are non-refundable except where mandatory law requires otherwise. Model payment funds on a Creator's Stripe Connect account remain subject to Stripe's terms.
+Subject to Section 6.6 (Platform-to-Business terms for eligible Creators) and applicable mandatory consumer protection laws, we may suspend or terminate your account, your access to the Service, or any prototype or model you operate at any time, with or without notice, based on reasonable grounds including violation of these Terms, failure to pay fees, payment processor or tax non-compliance, or actions that pose a legal or security risk to Sokoyuku.
+- If we terminate your account for violating these Terms, any prepaid platform subscription fees are non-refundable except where mandatory law requires otherwise. Model payment funds on a Creator's connected payment account remain subject to the applicable payment processor's terms.
 - **Continuity of Purchased Access:** A model access period already granted continues until it ends, or until a successful refund or a lost dispute shortens it under Section 5, unless the underlying prototype or model is removed due to unlawful content, copyright infringement, or severe platform abuse.
 - If you believe we have suspended or terminated your account in error, you may ask us to review that decision by contacting [support@sokoyuku.com](mailto:support@sokoyuku.com).
 
@@ -376,7 +376,7 @@ Subject to Section 6.6 (Platform-to-Business terms for eligible Creators) and ap
 
 ### 13.3 Discontinuation of Platform Features
 
-If we discontinue a Sokoyuku platform subscription plan or a material paid platform feature you prepaid for, we will give reasonable advance notice when practicable and, where required by these Terms or mandatory law, refund prepaid unused platform fees for the discontinued Sokoyuku-billed period. Model payment funds remain on Creators' Stripe Connect accounts under Stripe. Ending a platform plan does not end a model access period.
+If we discontinue a Sokoyuku platform subscription plan or a material paid platform feature you prepaid for, we will give reasonable advance notice when practicable and, where required by these Terms or mandatory law, refund prepaid unused platform fees for the discontinued Sokoyuku-billed period. Model payment funds remain on Creators' connected payment accounts under the applicable payment processor's terms. Ending a platform plan does not end a model access period.
 
 ## 14. General Provisions
 

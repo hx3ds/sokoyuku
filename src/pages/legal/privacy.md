@@ -77,13 +77,13 @@ Under Data Protection Principle 1(3) of the Hong Kong PDPO and applicable data p
   - *Consequence:* Voluntary; if not provided, we may be unable to investigate or resolve your specific support inquiry.
 
 ### 4.2 Financial and Transaction Data
-Sokoyuku uses Stripe to process transactions. Depending on whether you purchase a platform subscription, pay a Creator for model access, or receive payouts as a Creator:
-- **Payment Information (Obligatory for Paid Services):** Stripe processes your payment card or payment method. Sokoyuku does not store your full card number. A model payment is a one-time direct charge that does not save your card. A platform subscription may maintain a payment method with Stripe for renewals.
+Sokoyuku uses third-party payment processors to process financial transactions. Depending on whether you purchase a platform subscription, pay a Creator for model access, or receive payouts as a Creator:
+- **Payment Information (Obligatory for Paid Services):** Third-party payment processors collect and process your payment card or payment method details. Sokoyuku does not store your full card number or sensitive payment credentials. A model payment is a one-time direct charge that does not save your card or payment method. A platform subscription may maintain a payment method with the payment processor for recurring renewals.
   - *Consequence:* Required to execute payment. If not provided, paid access cannot be granted.
-- **Transaction Records (Obligatory):** Records of platform subscriptions, model payments, granted access periods, and Sokoyuku application fees.
+- **Transaction Records (Obligatory):** Records of platform subscriptions, model payments, granted access periods, and Sokoyuku platform or application fees.
   - *Consequence:* Required for tax compliance, accounting, dispute handling, and fulfilling the contract.
-- **Creator Stripe Connect Account (Obligatory for Paid Creators):** Link to the Creator's Stripe Connect account. Stripe directly collects identity, banking, KYC, and tax details in Stripe-hosted onboarding.
-  - *Consequence:* Supplying this information to Stripe is obligatory for Creators wishing to publish paid prototypes. If omitted, the prototype cannot accept payments and remains hidden.
+- **Creator Connected Payment Account (Obligatory for Paid Creators):** Link to the Creator's connected payment account with a supported payment processor. The payment processor directly collects identity, banking, business registration, KYC, and tax details through its onboarding or authorization flow.
+  - *Consequence:* Supplying this information to the payment processor is obligatory for Creators wishing to publish paid prototypes. If omitted, the prototype cannot accept payments and remains hidden.
 
 ### 4.3 Technical, Network, and Server Log Data
 - **Server Logs (Automatically Collected):** IP address, request timestamp, HTTP status, and API path requested.
@@ -105,7 +105,7 @@ We obtain Personal Data from the following sources:
 - **From third-party authentication providers:** When you choose to authenticate via Google or Telegram.
 - **Automatically from your device:** Technical and network data collected via server logs and the session cookie when accessing the Service.
 - **From third-party messaging platforms:** Incoming and outgoing routing metadata received via Telegram, Discord, Matrix, QQ, or WhatsApp APIs.
-- **From service providers:** Transaction confirmations and Connect account status from Stripe; anti-bot verification from Cloudflare Turnstile.
+- **From service providers:** Transaction confirmations and payment account status from payment processors; anti-bot verification from Cloudflare Turnstile.
 
 ## 6. How and Why We Use Your Personal Data (Lawful Bases)
 
@@ -114,8 +114,8 @@ Under the Hong Kong PDPO, GDPR, UK DPA, and other applicable laws, we process Pe
 | Purpose / Activity | Lawful Basis for Processing (GDPR / UK GDPR) |
 | :--- | :--- |
 | **Account and Service Provision:** Registering users, managing Messaging Accounts, listing prototypes and models, and routing messages between accounts/bots and models. | Performance of a contract (Art. 6(1)(b)) |
-| **Payment Processing & Accounting:** Settle platform subscriptions on Sokoyuku's Stripe account, facilitate Stripe direct charges to Creators, record access periods, handle refunds, and maintain financial records. | Performance of a contract (Art. 6(1)(b)); Legal obligation (Art. 6(1)(c)) |
-| **Creator Stripe Connect Administration:** Connecting Creator Stripe Connect accounts, monitoring requirement status, and restricting checkout if onboarding or tax setup is incomplete. | Performance of a contract (Art. 6(1)(b)); Legal obligation (Art. 6(1)(c)) |
+| **Payment Processing & Accounting:** Settle platform subscriptions on Sokoyuku's payment processing account, facilitate direct charges to Creator connected payment accounts, record access periods, handle refunds, and maintain financial records. | Performance of a contract (Art. 6(1)(b)); Legal obligation (Art. 6(1)(c)) |
+| **Creator Payment Account Administration:** Connecting Creator payment accounts, monitoring verification and compliance status, and restricting checkout if onboarding or tax setup is incomplete. | Performance of a contract (Art. 6(1)(b)); Legal obligation (Art. 6(1)(c)) |
 | **Contract Between Users:** Facilitating the contract between Model Users and Prototype Creators. | Performance of a contract (Art. 6(1)(b)) |
 | **Messaging & Voice Calls:** Routing messages and signaling WebRTC calls between users and creator-hosted models. | Performance of a contract (Art. 6(1)(b)) |
 | **Security, Integrity & Abuse Prevention:** Ensuring account owners rightfully administer linked bots, enforcing acceptable use, detecting spam, fraud, and bot attacks, and monitoring platform reliability. | Legitimate interests (Art. 6(1)(f)) |
@@ -143,8 +143,8 @@ When an account holder uses Sokoyuku to connect a bot or Messaging Account on a 
 ## 9. Sharing and Disclosing Your Personal Data
 
 We may share your Personal Data with the following categories of recipients:
-- **Between Users:** When a Model User pays a Creator for model access, transaction details (payment amount, granted access period, payment timestamp, and masked billing metadata) are shared with the Creator via Stripe Connect to perform the contract. Sokoyuku does not provide the Creator with your payment card number.
-- **Service Providers (Processors):** Trusted third-party vendors who provide infrastructure, payment processing, email delivery, and security services on our behalf (e.g., Stripe for payment processing; Cloudflare for CDN, Turnstile verification, and DDoS protection). These providers process data under strict contractual confidentiality and data protection obligations.
+- **Between Users:** When a Model User pays a Creator for model access, transaction details (payment amount, granted access period, payment timestamp, and masked billing metadata) are shared with the Creator via the payment processor to perform the contract. Sokoyuku does not provide the Creator with your payment card number or sensitive payment credentials.
+- **Service Providers and Financial Partners:** Trusted third-party vendors who provide infrastructure, payment processing, email delivery, and security services on our behalf (e.g., licensed payment processors and financial institutions for payment processing; Cloudflare for CDN, Turnstile verification, and DDoS protection). These providers process data under strict contractual confidentiality and data protection obligations.
 - **Corporate Successors:** In the event of a merger, acquisition, restructuring, or sale of company assets, user data may be transferred to the acquiring entity subject to this Policy.
 - **Law Enforcement and Legal Process:** If required by applicable law, court order, or regulatory authority, or where necessary in good faith to protect the rights, property, or safety of Sokoyuku, our users, or the public.
 
@@ -209,14 +209,14 @@ We use a strictly necessary sign-in cookie to maintain your authenticated sessio
 ## 15. Additional U.S. State Privacy Disclosures
 
 If you reside in California or other U.S. states with comprehensive privacy legislation (e.g., Virginia, Colorado, Connecticut, Utah, Texas, Oregon, Montana), the California Consumer Privacy Act (CCPA/CPRA) and state laws provide specific rights:
-- **Categories Collected & Disclosed:** Identifiers (name, email, IP address, account IDs); Commercial information (subscriptions, payments, access periods); Internet/network activity (API paths in server logs, routing metadata); Financial records (handled via Stripe).
+- **Categories Collected & Disclosed:** Identifiers (name, email, IP address, account IDs); Commercial information (subscriptions, payments, access periods); Internet/network activity (API paths in server logs, routing metadata); Financial records (handled via third-party payment processors).
 - **No Sale or Sharing:** We do not sell your personal information or share it for cross-context behavioral advertising.
 - **Account Credentials as Sensitive Information:** Credentials uploaded to manage Messaging Accounts are used solely for authentication and routing as directed by you and are not used to infer personal characteristics.
 - **State Privacy Rights:** You have the right to know, access, correct, delete, and receive non-discriminatory treatment. Contact [privacy@sokoyuku.com](mailto:privacy@sokoyuku.com) to submit a verifiable request.
 
 ## 16. Third-Party Links and Services
 
-Our Service interacts with third-party authentication providers (Google, Telegram), messaging platforms (Telegram, Discord, Matrix, QQ, WhatsApp), Cloudflare, and Stripe. Once you interact with those platforms or follow external links, their data collection is governed by their respective privacy notices. We encourage you to review their terms and privacy policies.
+Our Service interacts with third-party authentication providers (Google, Telegram), messaging platforms (Telegram, Discord, Matrix, QQ, WhatsApp), Cloudflare, and third-party payment processors. Once you interact with those platforms or follow external links, their data collection is governed by their respective privacy notices. We encourage you to review their terms and privacy policies.
 
 ## 17. Updates to this Policy
 
