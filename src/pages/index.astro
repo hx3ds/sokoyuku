@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const site = {
 	name: "Sokoyuku",
 	description:
-		"",
+		"Connect messaging apps to creator-hosted AI models, or run private local models on your own station.",
 };
 const heroTitle = "Build or Chat with AI models just like your contacts";
 const heroSubtitle = site.description;
@@ -35,6 +35,16 @@ const faqItems = [
 			"A local prototype, its models, and your local accounts are used together on a station you run. The prototype is private and free, and every model of it is a local model. A local account's credentials are encrypted so only that station can read them. That station carries messages between the accounts and corresponding models inside it.",
 			"With cloud, Sokoyuku carries messages between the accounts and corresponding models in the prototype's station.",
 		],
+	},
+	{
+		question: "How do model payments and subscriptions work?",
+		answer:
+			"Paid access to a model is a one-time direct charge set by the creator and processed on the creator's Stripe account. It does not auto-renew and does not save your card. Platform subscriptions are separate, optional monthly plans billed by Sokoyuku for higher account, prototype, and model limits.",
+	},
+	{
+		question: "Does Sokoyuku host the models or store chat messages?",
+		answer:
+			"No. Sokoyuku does not host the AI models and never stores message content (text, attachments, or audio). Models run on stations operated by creators or locally on your own machine. Sokoyuku only transiently relays messages and keeps routing metadata for up to 30 days.",
 	},
 ];
 const appSite = "https://app.sokoyuku.com";
@@ -79,7 +89,7 @@ const year = new Date().getFullYear();
 	<section class="hero">
 		<div class="container hero-inner">
 			<h1 class="hero-title" data-i18n={heroTitle}>{heroTitle}</h1>
-			<p class="hero-subtitle">{heroSubtitle}</p>
+			<p class="hero-subtitle" data-i18n={heroSubtitle}>{heroSubtitle}</p>
 
 			<div class="hero-actions" id="cta">
 				<a class="button button-lg" href={appSite} data-i18n="Start now">Start now</a>
@@ -366,7 +376,8 @@ const year = new Date().getFullYear();
 				))}
 			</div>
 
-			<p class="pricing-footnote">
+			<p class="pricing-footnote" data-i18n="Platform subscriptions provide platform feature limits. Access to creator-hosted models is purchased separately via one-time payments set directly by creators.">
+				Platform subscriptions provide platform feature limits. Access to creator-hosted models is purchased separately via one-time payments set directly by creators.
 			</p>
 		</div>
 	</section>

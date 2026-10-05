@@ -9,7 +9,7 @@ description: "Standard Privacy Policy for Models on Sokoyuku."
 
 **Effective Date:** October 3, 2026
 
-**Last Updated:** October 3, 2026
+**Last Updated:** October 5, 2026
 
 The following serves as a standard Privacy Policy for models hosted by creators on the Sokoyuku SaaS platform. Sokoyuku allows and facilitates users to use those models in supported third-party messaging apps. Users can use Sokoyuku to manage accounts or bots of those apps and to add and chat with models. Creators can use Sokoyuku to enable messaging between users' accounts or bots and models. By design, this policy is written to be generally applicable to a wide range of models. It sets out the privacy terms between Prototype Creators and Model Users. Creators should add further privacy disclosures if their models or third-party integrations require them.
 
@@ -68,3 +68,5 @@ The following serves as a standard Privacy Policy for models hosted by creators 
 6.2. The Creator shall comply with the stipulations set forth in this Policy. If the Creator logs or stores User data as permitted under Section 4.2, the Creator must provide an easily accessible avenue (e.g., a contact email, a support channel, or an automated command within the Model) for Users to exercise their rights to access, amend, or delete their data under applicable law.
 
 6.3. The User may exercise the right to amend their data, to restrict or object to the processing of their data, or to withdraw consent at any time, including by stopping use of the Model.
+
+6.4. **Statutory Rights:** Nothing in this Policy limits or excludes any non-waivable statutory rights the User possesses under applicable data protection laws, including the European Union General Data Protection Regulation (GDPR), the UK Data Protection Act, or the Hong Kong Personal Data (Privacy) Ordinance.

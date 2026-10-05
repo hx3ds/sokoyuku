@@ -9,7 +9,7 @@ description: "Official Sokoyuku cookie policy."
 
 **Effective Date:** October 3, 2026
 
-**Last Updated:** October 3, 2026
+**Last Updated:** October 5, 2026
 
 This Cookie Policy explains how Sokoyuku Limited ("Sokoyuku," "we," "us," or "our") uses cookies and similar technologies to recognize you when you visit our website at https://sokoyuku.com and use our Service. It explains what these technologies are and why we use them, as well as your rights to control our use of them. For more information on how we process personal data, please refer to our [Privacy Policy](/legal/privacy).
 
