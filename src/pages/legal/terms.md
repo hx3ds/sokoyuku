@@ -10,7 +10,7 @@ description: "Official Sokoyuku terms of service."
 
 **Effective Date:** October 3, 2026
 
-**Last Updated:** October 5, 2026
+**Last Updated:** October 6, 2026
 
 Welcome to Sokoyuku! These Terms of Service ("Terms") govern your use of the Sokoyuku SaaS platform, website, applications, APIs, and any related services provided by us (collectively, the "Service").
 
@@ -211,8 +211,11 @@ Where a Prototype Creator offers models or prototypes to consumers located in th
    - During the notice period, the Creator has the right to terminate their agreement with Sokoyuku before the changes become effective.
    - The notice period does not apply where changes are required by law or to address unforeseen and imminent cybersecurity, malware, or fraud risks.
 4. **Ranking Parameters (P2B Art. 5):**
-   - Public prototypes in the Sokoyuku directory and search results are ranked primarily based on: (a) text relevance matching search queries (title, tags, and description); (b) recency of publication or update; (c) active interaction volume and model usage; and (d) active connected payment account and availability status.
-   - Sokoyuku does not offer paid placement, sponsored ranking boosts, or preferential ranking for its own services over Creator prototypes.
+   - **Main Ranking Parameters:** Public prototypes in directory browsing and search results are ranked primarily based on:
+     - **Text Relevance (Search Queries):** When a search term is entered, results are ranked primarily by keyword relevance across the prototype's name, creator username, and description.
+     - **Platform Certification:** Certified prototypes receive a ranking boost. In search, that boost does not override a clearly better keyword match.
+     - **Performance and Quality Metrics:** Directory browse order and search tie-breaking use an automated score of recent net subscription revenue, current users, recent payment volume, and model count. New prototypes receive a temporary discovery boost that fades. Browse results limit how many listings from the same creator are shown, unless the directory is filtered to that creator. The system applies measures to deter artificial volume inflation.
+   - **No Paid Placement:** Sokoyuku does not offer paid placement, sponsored ranking boosts, or preferential ranking for its own services over Creator prototypes.
 5. **Data Access (P2B Art. 9):**
    - Creators have direct access to transaction data, gross receipts, and customer refund records through their payment processor dashboard or portal. Within Sokoyuku, Creators have access to aggregate prototype usage metrics and active subscriber numbers.
    - Sokoyuku has access to technical logs, platform metrics, and routing metadata (retained for up to 30 days) to operate and secure the Service. Neither party has access to personal data beyond that necessary to deliver the Service and fulfill transactions.
